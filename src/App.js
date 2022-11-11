@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './pages/frontEnd/footer/Footer';
 import Header from "./pages/frontEnd/header/Header";
 import MainRoutes from "./routes/MainRoutes";
 
@@ -8,7 +7,6 @@ const App = () => {
     <>
       <Header />
       <MainRoutes />
-      <Footer />
     </>
   );
 };
