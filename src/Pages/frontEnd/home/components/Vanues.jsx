@@ -48,7 +48,8 @@ export default function Vanues() {
                 breakpoint: 400,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    lineHeight: 0
                 }
             }
         ]

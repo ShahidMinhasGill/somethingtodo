@@ -1403,6 +1403,10 @@ letter-spacing: 0.063em;
             position: "relative"
         }
     }
+     .check {
+        margin-top: -16px !important;
+    }
+ 
     .main-vanue{
         .vanuebg2{
             background-image: url("../../../assets/vanuebg2.png");
@@ -1502,8 +1506,8 @@ letter-spacing: 0.063em;
         left: -1.2% !important;
     }
     .highlight {
-        left: 108px;
-        top: 172px;
+        left: 151px;
+        top: 35px;
     }
     .power {
         font-size: 35px !important;
@@ -1512,5 +1516,11 @@ letter-spacing: 0.063em;
     }
 }
 
-
+.slick-track {
+    display: flex !important;
+  }
+  
+  .slick-slide {
+    height: auto;
+  }
 /* casuals sec6 css */
