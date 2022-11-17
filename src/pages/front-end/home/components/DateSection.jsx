@@ -13,7 +13,7 @@ const DateSection = () => {
         <Row style={{ marginTop: '4rem' }}>
             <Col xs={12}>
                 <div className="date-events">
-                    {/* <div className="dateHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div> */}
+                    <div className="dateHighlight"></div>
                     <div className="date-text">
                         <h2>looking for a date?</h2>
                         <p>Find Somethingtodo with someone who shares your interest</p>

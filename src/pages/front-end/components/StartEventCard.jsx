@@ -1,187 +1,102 @@
 import React, { useEffect, useState } from 'react'
-import { FaCalendarCheck } from "react-icons/fa";
-import { MdLocationOn, MdLocationPin } from 'react-icons/md';
-import { AiFillDollarCircle } from 'react-icons/ai';
-import { BsChatLeftDots, BsChatSquare } from 'react-icons/bs';
-import { IoIosArrowForward } from 'react-icons/io';
-import readyImg from '../../../assets/ready.png';
+import { MdDateRange, MdLocationPin } from "react-icons/md";
+import { BiDollar } from "react-icons/bi";
+import { BsChatSquare } from "react-icons/bs";
+import { FcNext } from "react-icons/fc";
+import { AiFillDollarCircle } from "react-icons/ai";
+import { Col, Row } from 'react-bootstrap'
+import readyImg from '../../../assets/ready.png'
+import CustomButton from "../../../components/form/CustomButton";
+import vanueImg from '../../../assets/Rectangle 11.jpg';
 import dateicon from '../../../assets/dateicon.svg';
-import { Card, Col, Row } from 'react-bootstrap';
-import User from "../../../assets/nouser.png";
-import CustomButton from '../../../components/form/CustomButton';
-
+import dollar from '../../../assets/dollaricon.svg';
 
 const StartEventCard = () => {
     return (
         <>
-            <Card className='start-event-card-style'>
-                <div className='card-custom-Body'>
-                    <Row>
-                        <Col lg={6}>
-                            <Card.Img variant="" src={readyImg} />
+            <Row className='ready-event-card'>
+                <Col lg={5}>
+                    <img className="card2-img img-fluid" src={readyImg} alt="simple" />
+                </Col>
+                <Col lg={7}>
+                    <Row className="para-sec">
+                        <Col lg={8}>
+                            <h2>
+                                LOREM IPSUM DOLOR SIT AMET
+                            </h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+                            </p>
                         </Col>
-                        <Col lg={6}>
-                            <Card.Body>
-                                <Card.Title>LOREM IPSUM DOLOR SIT AMET</Card.Title>
-                                <Card.Text className='desc'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                                </Card.Text>
-                                <p className="event"> Event Starts in </p>
-                                <Row>
-                                    <Col lg={2}>
-                                        <div className="box">
-                                            <span>01</span>
+                        <Col lg={12}>
+                            <div className="box-1">
+                                <div>
+                                    <p> Event Starts in </p>
+                                    <div className="d-flex">
+                                        <div className="box-2">
+                                            <span>0-1 </span>
                                             <hr />
-                                            <p>DAYS</p>
+                                            <span className="span-2"> DAYS</span>
                                         </div>
-                                    </Col>
-                                    <Col lg={2}>
-                                        <div className="box">
-                                            <span>01</span>
+                                        <div className="box-2">
+                                            <span>12</span>
                                             <hr />
-                                            <p>DAYS</p>
+                                            <span className="span-2">HOURS</span>
                                         </div>
-                                    </Col>
-                                    <Col lg={2}>
-                                        <div className="box">
-                                            <span>01</span>
+                                        <div className="box-2">
+                                            <span>22</span>
                                             <hr />
-                                            <p>DAYS</p>
+                                            <span className="span-2">MINUTES</span>
                                         </div>
-                                    </Col>
-                                    <Col lg={2}>
-                                        <div className="box">
-                                            <span>01</span>
+                                        <div className="box-2">
+                                            <span >21</span>
                                             <hr />
-                                            <p>DAYS</p>
+                                            <span className="span-2">SECONDS</span>
                                         </div>
-                                    </Col>
-                                    <Col lg={2}>
-                                        {/* <CustomButton text='Join Now' /> */}
-                                    </Col>
-
-
-                                </Row>
-                                <p className='address'>
-                                    <MdLocationPin />Address
-                                </p>
-                                <div className="bottom-sec">
-                                    <img src={readyImg} alt="dateicon" className='profile-img' />
-                                    <Row>
-
-                                        <Col lg={6}>
-                                            <div className="event-card-chat">
-                                                <div>
-                                                    <p className='chat'>
-                                                        <BsChatSquare />Live Chat
-                                                    </p>
-                                                    <div className="last-content">
-                                                        {[1, 2, 3, 4, 5].map(item => (
-                                                            <img className="user-img-2" src={User} alt="user" />
-                                                        ))}
-                                                        <p className="others text-muted">& 12 others {">"}</p>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </Col>
-                                        <Col lg={2} >
-                                            <p className='address '>
-                                                <img src={dateicon} alt="dateicon" />Date
-                                            </p>
-                                        </Col>
-                                        <Col >
-                                            <p className='address'>
-                                                <MdLocationPin />paid by host
-                                            </p>
-                                        </Col>
-                                        <p className="price-txt text-end">
-                                            $45
-                                        </p>
-                                    </Row>
+                                    </div>
                                 </div>
+                                {/* <button className="join-but">JOIN NOW</button> */}
+                                <CustomButton text='JOIN NOW' />
+                            </div>
+                            <div className="row last-row">
+                                <div className="col-6 p-0">
+                                    <img className="user-imge" src={vanueImg} alt="user" />
+                                    <div className="usersDiv">
+                                        <p className="text-muted">
+                                            <BsChatSquare /> Live chat
+                                        </p>
+                                        <div className="last-content">
+                                            <img className="user-img-2" src={vanueImg} alt="user" />
+                                            <img className="user-img-2" src={vanueImg} alt="user" />
+                                            <img className="user-img-2" src={vanueImg} alt="user" />
+                                            <img className="user-img-2" src={vanueImg} alt="user" />
+                                            <img className="user-img-2" src={vanueImg} alt="user" />
+                                            <img className="user-img-2" src={vanueImg} alt="user" />
+                                            <p className="others text-muted">& 12 others <FcNext /></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div className="d-flex mt-2 justify-content-between">
+                                        <p>
+                                            <img src={dateicon} alt="dateicon" /> <span>Date</span>
+                                        </p>
+                                        <p>
+                                            <img src={dollar} alt="crunncyicon" />  <span>paid by host</span>
+                                        </p>
 
-
-                            </Card.Body>
+                                    </div>
+                                    <div className="d-flex mt-2 justify-content-end">
+                                        <p className="price-txt">
+                                            $45.00
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
-
-                </div>
-            </Card>
-
-            {/* <div class="card item-card  card-block">
-                <img src={vanueImg} alt="" className='card-img' />
-                <div className="row dcard-row">
-                    <div className="col-12" >
-                        <div className="row justify-content-between">
-                            <div className="col-2  d-flex justify-content-center for-color" >
-                                <div className='mt-3' >
-                                    <p className='m-0 cdate1' >12</p>
-                                    <p className='m-0 cdate2' >MARCH</p>
-                                    <p className='m-0 cdate3' >2020</p>
-                                </div>
-                            </div>
-                            <div className="col-10" style={{ position: "relative" }}>
-                                <div className="row"></div>
-                                <div className="card-content1">
-                                    <p className="dhead">
-                                        LOREM IPSUM DOLOR SIT
-                                    </p>
-                                    <p className="dhead-2 text-muted pb-3 mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                                    </p>
-                                    <div className="dcard-content mt-2">
-                                        <div className="row">
-                                            <div className="col-6">
-                                                <MdLocationOn /><span className='address mt-0'>Address</span>
-                                            </div>
-                                            <div className="col-6 ">
-                                                <FaCalendarCheck className="sub" />
-                                                <span className="cdate">
-                                                    Date
-
-                                                </span>
-                                                <span className="cpaid mx-2">
-                                                    <AiFillDollarCircle className="sub2 " />
-                                                    Paid by host
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img className="user-img" src={vanueImg} alt="user" />
-                                    <div className="event-card-chat">
-                                        <div className="chatOptionDiv" >
-                                            <div>
-                                                <div className="row1">
-                                                    <BsChatLeftDots /><span style={{ marginLeft: "8px", fontSize: "9px" }}>Live Chat</span>
-                                                </div>
-                                                <div className="last-content">
-                                                    <img className="user-img-2" src={vanueImg} alt="user" />
-                                                    <img className="user-img-2" src={vanueImg} alt="user" />
-                                                    <img className="user-img-2" src={vanueImg} alt="user" />
-                                                    <img className="user-img-2" src={vanueImg} alt="user" />
-                                                    <p className="others text-muted">& 12 others<IoIosArrowForward style={{ color: "#64E2FF", fontSize: "12px" }} /></p>
-
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="set-pd">
-                                                    <p className="price-txt">
-                                                        $99
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
+                </Col>
+            </Row>
         </>
     )
 }

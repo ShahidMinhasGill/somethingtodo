@@ -17,10 +17,12 @@ const TopVanues = () => {
     }, [])
 
     return (
-        <Row >
+        <Row className='justify-content-between'>
             <Col xs={12} md={4} data-aos="fade-right" className="aos-init aos-animate happen-wrapper">
-                <p className="happen-text">
-                    What's <br /> Happening <br />Right Now<br /> in
+                <p className="happen-text ">
+                    What's  Happening Right Now <br className='d-sm-none d-md-block' /> in
+                    <div className="topVanueHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
+
                     <span> TORONTO</span>
                 </p>
                 <Dropdown>

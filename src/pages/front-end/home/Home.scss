@@ -46,6 +46,15 @@
     span {
       color: #ff9700;
     }
+    .topVanueHighlight{
+      background: #64E2FF !important;
+      width: 42.7%;
+      height: 25px;
+      top: 15.5rem;
+      right: 40.5%;
+      position: absolute;
+      z-index: -1;
+    }
   }
   .dropdown-btn {
     border: 1px solid #ff9700 !important;
@@ -97,6 +106,164 @@
 //   padding: 0 1rem;
 // }
 
+.ready-event-card{
+  // background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
+  .para-sec{
+  
+    h2{
+      
+    margin-top: 3.5rem;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.063em;
+      color: #FFFFFF;
+    }
+    p{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.017em;
+      color: #FFFFFF;
+    }
+  }
+  .box-1{
+    // padding: 2.9rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    p{
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: -0.017em;
+      display: flex;
+      justify-content: center;
+    }
+    button{
+      margin-top: 30px;
+    }
+    .box-2 {
+      background-color: #ffffff;
+      border-radius: 4px;
+      padding: 7px 7px;
+      width: 67.66px;
+      height: 64px;
+      margin-right: 8px;
+      text-align: center;
+      span{
+        margin-bottom: 0 !important;
+        font-weight: 700;
+        font-size: 21.9429px;
+        line-height: 26px;
+        display: flex;
+        justify-content: center;
+        letter-spacing: 0.063em;
+        color: #1F518B;
+      }
+      hr {
+        border-top: 2px dashed #1F518B;
+        margin: 2px -7px 4px -7px !important;
+      }
+      .span-2{
+        font-size: 10.9714px;
+        margin-top: -3px
+      }
+      
+    }
+  }
+  .last-row {
+    position: relative;
+    background-color: #fff;
+    margin: 0px 0px 0px -31px;
+    border-bottom-right-radius: 10px;
+    margin-top: 47px;
+    .user-imge {
+      left: -41px;
+      height: 81px;
+      width: 81px;
+      position: absolute;
+      border: 5px solid #fff;
+      border-radius: 50%;
+    }
+    p{
+      span{
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        letter-spacing: -0.017em;
+        color: #515151;
+      }
+    }
+    .usersDiv {
+      margin: 1rem 0px 0px 3rem;
+      .p {
+        font-size: 10px;
+        margin: 0 !important;
+      }
+      .last-content {
+        display: flex;
+        align-items: center;
+        .user-img-2 {
+          height: 21px;
+          width: 21px;
+          border-radius: 50%;
+          margin-right: -6px;
+          border: 1px solid white;
+        }
+        .others {
+          margin-left: 11px;
+          font-size: 7px;
+          margin-right: auto;
+          margin-bottom: 0px;
+        }
+      }
+      
+    }
+    .price-txt {
+      color: black;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.063em;
+    }
+
+  }
+}
+.main-readyEvent{
+  background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 64px;
+    letter-spacing: 0.063em;
+    color: #FFFFFF;
+
+  }
+  p{
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.063em;
+    color: #FFFFFF;
+  }
+  .ready-card{
+    border: 1px solid wheat;
+    border-bottom-right-radius: 10px;
+  }
+
+  
+}
 .date-events {
   position: relative;
   background-image: url("../../../assets/dateimg.png");
@@ -107,19 +274,16 @@
   width: 1148px;
   margin: auto;
   .dateHighlight{
-    background: #1F518B !important;
-    width: 8.7%;
+    background: #1F518B;
+    width: 10.5%;
     height: 25px;
-    top: 74px;
-    right: 31.5%;
+    margin-top: 89px;
+    left: 60%;
     position: absolute;
-    z-index: 1;
   }
   .date-text {
     text-align: center;
     padding-top: 4rem;
-   
- 
     h2 {
       color: #fff;
       text-transform: uppercase;
@@ -127,6 +291,8 @@
       font-size: 40px;
       line-height: 48px;
       letter-spacing: 0.063em;
+      position: relative;
+      z-index: 1;
     }
     p {
       font-size: 14px;
@@ -802,8 +968,47 @@ background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
       }
     }
   }
+
+  .happen-wrapper {
+    padding-top: 5rem;
+    .happen-text {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      color: #1f518b;
+      text-transform: uppercase;
+      span {
+        color: #ff9700;
+      }
+      .topVanueHighlight{
+        background: #64E2FF !important;
+        width: 42.7%;
+        height: 25px;
+        top: 15.5rem;
+        right: 40.5%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
+    .dropdown-btn {
+      border: 1px solid #ff9700 !important;
+      border-radius: 14px;
+      color: #ff9700;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+  }
   .date-events{
     width: 100%;
+    .dateHighlight{
+     display: none;
+    }
+    .date-text{
+      h2{
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
   }
   .main-casual{
     width: 100%;
@@ -853,6 +1058,14 @@ background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.017em;
+ }
+ .dropdown-btn{
+  border: 1px solid #ff9700 !important;
+    border-radius: 7px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 9px;
+    background-color: #ff9700;
  }
 
   }
@@ -920,8 +1133,8 @@ background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
       transform: translateY(0px);
       transition: 0.5s;
       h1 {
-        font-weight: 600;
-        font-size: 10px;
+        font-weight: 500;
+        font-size: 5px;
         line-height: 12px;
       }
       p {
@@ -961,4 +1174,22 @@ background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
 display: none;
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

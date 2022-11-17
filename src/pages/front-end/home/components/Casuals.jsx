@@ -12,6 +12,7 @@ const Casuals = () => {
                 <Col xs={12} md={6}>
                     <div className="main-casual" style={{ marginTop: '8rem' }}>
                         <div className="casual-text">
+                            <div className="dateHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
                             <h2>NEW IN TOWN AND DON'T <br></br> ANYONE HERE YET?</h2>
                             <p>Meet Someone who can show you around a little bit</p>
                             <CustomButton text='See All Casual' />
