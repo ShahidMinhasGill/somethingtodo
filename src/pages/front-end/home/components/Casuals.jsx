@@ -9,10 +9,10 @@ const Casuals = () => {
     return (
         <div className="container">
             <Row>
-                <Col xs={12} md={6}>
-                    <div className="main-casual" style={{ marginTop: '8rem' }}>
+                <div className="main-casual card" style={{ marginTop: '8rem' }}>
+                    <Col xs={12} lg={12} md={6}>
                         <div className="casual-text">
-                            <div className="dateHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
+                            <div className="casualHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
                             <h2>NEW IN TOWN AND DON'T <br></br> ANYONE HERE YET?</h2>
                             <p>Meet Someone who can show you around a little bit</p>
                             <CustomButton text='See All Casual' />
@@ -26,8 +26,8 @@ const Casuals = () => {
                                 }
                             </Slider>
                         </div>
-                    </div>
-                </Col>
+                    </Col>
+                </div>
             </Row>
         </div>
     )

@@ -20,7 +20,6 @@ const Somethingtodo = () => {
                         <Col style={{ color: 'blue' }}>ALL</Col>
                         <Col>THIS WEEKEND</Col>
                         <Col>FREE</Col>
-
                     </Row>
                 </Col>
                 <Col lg={6} md={6} sm={12}>

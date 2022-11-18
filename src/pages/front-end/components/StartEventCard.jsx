@@ -79,10 +79,10 @@ const StartEventCard = () => {
                                 <div className="col-6">
                                     <div className="d-flex mt-2 justify-content-between">
                                         <p>
-                                            <img src={dateicon} alt="dateicon" /> <span>Date</span>
+                                            <img className='icon' src={dateicon} alt="dateicon" /> <span>Date</span>
                                         </p>
                                         <p>
-                                            <img src={dollar} alt="crunncyicon" />  <span>paid by host</span>
+                                            <img className='icon' src={dollar} alt="crunncyicon" />  <span>paid by host</span>
                                         </p>
 
                                     </div>

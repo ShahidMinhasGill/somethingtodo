@@ -44,7 +44,7 @@ const TopVanues = () => {
             <Col xs={12} md={4} className='d-none d-lg-block'>
                 <TopVanuesCard />
             </Col>
-            <Col xs={12}>
+            <Col xs={12} lg={12}>
                 <Slider {...settings} >
                     {
                         [1, 2, 3, 4, 5, 6, 7].map(item => (
@@ -53,7 +53,7 @@ const TopVanues = () => {
                     }
                 </Slider>
             </Col>
-            <Col xs={12} >
+            <Col xs={12} lg={12}>
                 <Slider {...settings} >
                     {
                         [1, 2, 3, 4, 5, 6, 7].map(item => (

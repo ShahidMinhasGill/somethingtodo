@@ -68,8 +68,9 @@
 .top-vanues-card-style {
   width: 98%;
   margin: 20px auto;
-  
-  // filter: drop-shadow(0px 6px 24px rgba(0, 0, 0, 0.2));
+  cursor:pointer;
+
+  // fil  ter: drop-shadow(0px 6px 24px rgba(0, 0, 0, 0.2));
   .card-custom-Body {
     display: flex;
     // justify-content: space-between;
@@ -101,6 +102,12 @@
       text-transform: uppercase;
     }
   }
+
+
+}
+.top-vanues-card-style:hover{
+  transform: scale(1.05);
+  box-shadow: 5px 5px 10px rgba(34, 33, 33, 0.3);
 }
 // .slick-slide {
 //   padding: 0 1rem;
@@ -200,6 +207,11 @@
         letter-spacing: -0.017em;
         color: #515151;
       }
+    
+    }
+    .icon{
+      height: 16.99;
+      width: 16.99;
     }
     .usersDiv {
       margin: 1rem 0px 0px 3rem;
@@ -224,7 +236,7 @@
           margin-bottom: 0px;
         }
       }
-      
+    
     }
     .price-txt {
       color: black;
@@ -237,12 +249,18 @@
     }
 
   }
+ 
 }
 .main-readyEvent{
   background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  button{
+    width: 126px;
+    height: 36px;
+    font-size: 14px;
+  }
   h2{
     font-weight: 700;
     font-size: 40px;
@@ -261,7 +279,7 @@
     border: 1px solid wheat;
     border-bottom-right-radius: 10px;
   }
-
+ 
   
 }
 .date-events {
@@ -313,6 +331,14 @@
   height: 362px;
   width: 1148px;
   margin: auto;
+   .casualHighlight {
+    background: #1F518B;
+    width: 9%;
+    height: 25px;
+    margin-top: -7px;
+    left: 57.2%;
+    position: absolute;
+}
   .casual-text {
     text-align: center;
     padding-top: 4rem;
@@ -320,6 +346,8 @@
       color: #fff;
       text-transform: uppercase;
       font-weight: 500;
+      position: relative;
+    z-index: 1;
     }
     p {
       font-size: 14px;
@@ -385,23 +413,24 @@
     position: relative;
     border: none;
     margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     .card-custom-Body {
       display: flex;
       justify-content: space-between;
       align-items: center;
       .card-body {
-        padding-bottom: 8px;
-        padding-top: 8px;
+        padding-bottom: 0px;
+        padding-top: 0px;
         padding-left: 8px;
       }
       .card-title {
-        font-size: 13px;
+        font-size: 11px;
         text-transform: uppercase;
       }
       .desc {
         font-weight: 600;
         font-size: 9px;
-        line-height: 14px;
+        line-height: 11px;
         color: #909090;
         margin-bottom: 5px !important;
       }
@@ -415,6 +444,14 @@
           justify-content: space-between;
           align-items: center;
           width: 55%;
+          .address {
+            img {
+              margin-right: 3px;
+              height: 16.99px;
+              width: 16.99px;
+            }
+          }
+          
         }
 
         .address {
@@ -422,12 +459,10 @@
           justify-content: flex-start;
           align-items: center;
           font-weight: 500;
-          font-size: 12px;
+          font-size: 9px;
           color: #515151;
         }
-        img {
-          margin-right: 3px;
-        }
+     
       }
       .blue-side {
         text-align: center;
@@ -779,9 +814,9 @@ color: #161616;
   position: relative;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100% !important;
   height: 350px;
   margin: auto;
+  background-size: cover;
   p{
     position: absolute;
     right: 63.68%;
@@ -955,6 +990,108 @@ background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
   }
 }
 
+@media (min-width: 1440px) {
+  .highlight {
+   left: 183px;
+   top: 126px;
+}
+.happen-wrapper .happen-text .topVanueHighlight{
+  top: 12.5rem;
+}
+.ready-event-card  {
+  .last-row{
+    margin: 0px 0px 0px -34px;
+    border-bottom-right-radius: 10px;
+    margin-top: 47px;
+  }
+
+}
+}
+@media (max-width: 1024px) {
+  .date-events{
+    width: auto;
+  }
+  .main-casual{
+    width: 930px;
+  }
+  .main-dining{
+    width: 930px;
+  }
+  .happen-wrapper .happen-text .topVanueHighlight {
+    width: 58.7%;
+    top: 15.5rem;
+    right: 18.5%;
+}
+.main-somethingtodo {
+  h2 {
+    font-weight: 700;
+    font-size: 31px;
+   
+  }
+  .somethingtodo-text {
+    font-size: 12px;
+    margin-top: 2rem;
+}
+}
+.date-cards {
+  .date-card-style {
+    .card-custom-Body 
+    {
+      .address-date-host{
+        .address {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-weight: 500;
+          font-size: 6px;
+          color: #515151;
+         
+      }
+        
+      }
+    }
+  } 
+}
+.ready-event-card {
+  .box-1 {
+    button{
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 500;
+      margin: 1px 3px;
+      margin-top: 39px;
+    }
+  }
+} 
+.main-readyEvent{
+  .para-sec{
+    h2{
+      margin-top: 1.5rem;
+    font-size: 20px;
+    }
+    p{
+      font-size: 12px;
+    line-height: 16px;
+    }
+   
+  }
+h2{
+  font-size: 33px;
+}
+.card2-img{
+  height: 24.4rem;
+}
+}
+.main-blog  {
+  .card111 {
+    .info {
+      h1{
+        font-size: 20px;
+      }
+    }
+  }
+}
+}
 @media (max-width: 992px) {
   .bg-img {
     background-size: cover !important;
@@ -1174,8 +1311,221 @@ background: linear-gradient(140.6deg, #002C6D 0%, #0082CF 100%);
 display: none;
 }
 }
+@media (max-width: 768px) {
+  .happen {
+      text-align: center !important;
+  }
 
+  .p1 {
+      font-size: 16px;
+  }
 
+  .p2 {
+      font-size: 7px;
+  }
+
+  .join-but {
+      padding: 4px 7px;
+      font-size: 10px;
+  }
+
+  .rd-ico {
+      width: 1rem;
+      height: 1rem;
+  }
+
+  .rd-paid {
+      font-size: 10px !important;
+  }
+
+  .rd-date {
+      font-size: 10px !important;
+  }
+
+  .outside {
+      font-size: 26px !important;
+      margin-top: 203px !important;
+      left: 14% !important;
+  }
+
+  .power {
+      font-size: 40px;
+      margin-top: 193px !important;
+      left: 14% !important;
+  }
+
+  .checkout {
+      font-size: 30px !important;
+  }
+}
+@media (max-width: 750px) {
+  .bg-img {
+      background-size: cover;
+      width: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .place {
+      font-size: 35px;
+  }
+
+  /* .top-sec {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  } */
+  .create-btn {
+      margin-right: 0px;
+      margin-bottom: 15px;
+  }
+
+  .para1 {
+      font-size: 20px;
+      word-spacing: 0;
+      letter-spacing: 2px;
+  }
+
+  .para2 {
+      word-spacing: 1px;
+      letter-spacing: 1px;
+      font-size: 12px;
+  }
+
+  .button1 {
+      margin-top: 2%;
+  }
+}
+
+@media (max-width: 500px) {
+  .place {
+      font-size: 25px;
+      margin-top: 120px;
+  }
+
+  .categories {
+      display: block;
+  }
+
+  .cate {
+      margin: 1rem 0 !important;
+  }
+
+  .form-select {
+      width: 100% !important;
+  }
+
+  .bosas {
+      justify-content: space-between;
+  }
+
+  .content-1 {
+      padding: 0.5rem !important;
+  }
+
+  .box-1 {
+      display: block !important;
+      padding: 0.2rem;
+  }
+
+  .join-but {
+      display: flex;
+      justify-content: center;
+      margin: 5px auto;
+  }
+
+  .box-2 {
+      margin-right: 3px;
+  }
+
+  .event {
+      margin: 0 !important;
+  }
+}
+
+@media (max-width: 475px) {
+  .slick-current {
+      width: 340px !important;
+  }
+
+  .slick-prev {
+      display: none !important;
+  }
+
+  .slick-next {
+      display: none !important;
+  }
+
+  .happen {
+      text-align: center !important;
+  }
+
+  .in-town-highlight {
+      width: 35.7% !important;
+      height: 16px !important;
+      margin-top: 14px !important;
+      left: 7% !important;
+  }
+
+  .find-wine-highlight {
+      width: 35.7% !important;
+      height: 16px !important;
+      margin-top: 10px !important;
+      right: 6% !important;
+      z-index: -2 !important;
+  }
+
+  .sec6-para1 {
+      font-size: 19px !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+  }
+
+  .sec7-para1 {
+      width: 100% !important;
+      font-size: 19px !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+  }
+
+  .bg-img1 {
+      height: 220px !important;
+  }
+
+  .sec6-para2 {
+      font-size: 15px !important;
+      font-weight: 300 !important;
+  }
+
+  .outside {
+      font-size: 35px !important;
+      margin-top: 143px !important;
+  }
+
+  .checkout {
+      font-size: 20px !important;
+  }
+
+  .blogHighlight {
+      width: 41.7% !important;
+      height: 14px !important;
+      top: 14px !important;
+      right: 1.5% !important;
+  }
+
+  .somethingHighlight {
+      width: 41.7% !important;
+      height: 14px !important;
+      top: 21px !important;
+      left: -1.2% !important;
+  }
+
+  .power {
+      font-size: 35px !important;
+      margin-top: 195px !important;
+      left: 12% !important;
+  }
+}
 
 
 
