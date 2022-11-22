@@ -19,17 +19,17 @@ const TopVanues = () => {
     return (
         <Row className='justify-content-between'>
             <Col xs={12} md={4} data-aos="fade-right" className="aos-init aos-animate happen-wrapper">
-                <p className="happen-text ">
-                    What's  Happening Right Now <br className='d-sm-none d-md-block' /> in
+                <p className="happen-text tex-center">
+                    What's  Happening Right Now <br className='d-none d-md-block d-lg-block' /> in
                     <div className="topVanueHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
 
                     <span> TORONTO</span>
                 </p>
                 <Dropdown>
                     <Dropdown.Toggle variant="outlined" className="dropdown-btn">
-                        Dropdown Button
+                        Change location
                     </Dropdown.Toggle>
-                    <Dropdown.Menu>
+                    <Dropdown.Menu style={{ zIndex: "999" }}>
                         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
@@ -38,8 +38,14 @@ const TopVanues = () => {
                     </Dropdown.Menu>
                 </Dropdown>
             </Col>
-            <Col xs={12} md={4} className='d-none d-lg-block'>
-                <TopVanuesCard />
+            <Col xs={12} md={4} className='mobile-screen'>
+                <div className='vanuebg2'>
+                    <div className="set-postion">
+                        <TopVanuesCard />
+                    </div>
+                </div>
+                <div className='vanuebg1'></div>
+
             </Col>
             <Col xs={12} md={4} className='d-none d-lg-block'>
                 <TopVanuesCard />
