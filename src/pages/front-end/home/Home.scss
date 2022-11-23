@@ -1321,7 +1321,9 @@
 }
 
 @media (max-width: 475px) {
-  
+  .slick-current {
+    width: 0px !important;
+  }
       .bg-img {
       .top-text {
         .place {
@@ -1349,11 +1351,262 @@
         }
       }
     }
-    
-  
-  .slick-current {
-    width: 340px !important;
+    .cf-events {
+      .circle {
+        margin: 241px -34px;
+    }
+    }
+    .main-somethingtodo  {
+      .somethingtodoDiv {
+        // justify-content: space-between;
+        flex-wrap: wrap; 
+        .dropdown-btn{
+          width: 100px;
+        }
+        .smText {
+          margin-right: 2rem;
+        } 
+      } 
+    }
+    .date-cards {
+      .date-card-style {
+        width: 92%;
+        margin: 20px auto;
+    }
+   
   }
+  .mobile-screen{
+    .top-vanues-card-style {
+      width: 70%;
+      .card-custom-Body {
+        .card-title {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 27px;
+          text-align: start;
+        }
+        .address {
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 24px;
+          .loction-icon{
+          width: 40.96px;
+          height: 40.96px;
+          }
+        }
+       .blue-side {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.063em;
+        color: #1F518B;
+      //   p {
+      //     margin-top: -28px;
+      //     margin-bottom: -1rem;
+      // }
+      }
+      
+    }
+    }
+    .set-postion{
+      position: absolute;
+      margin-top: 0rem;
+    }
+    .vanuebg1{
+      background-image: url("../../../assets/vanuebg11.png");
+      text-align: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 192px;
+      z-index: -1;
+      position: "relative"
+    }
+    .vanuebg2{
+      background-image: url('../../../assets/Untitled.png');
+      text-align: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 156px;
+      z-index: 1;
+      position: "relative"
+    } 
+  }
+.small-screen-start-event{
+  .btn-main {
+    width: 98px;
+    height: 36px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 400;
+
+}
+      .date-host {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .btn-main {
+          width: 70px;
+          height: 34px;
+          border-radius: 6px;
+          font-size: 10px;
+        }
+        p{
+          margin-right: 0.1rem;
+        }
+      }
+  .date-time{
+  
+    p{
+      font-size: 12px;
+    line-height: 7px;
+    letter-spacing: 0.063em;
+    color: #FFFFFF;
+    font-weight: 500;
+    }
+    .address{
+      color: #FFFFFF;
+      .loction-icon{
+        width: 24px;
+         height: 24px;
+      }
+      span{
+        font-size: 13px;
+        line-height: 12px;
+      }
+      img{
+        width: 15px;
+        height: 16px;
+      }
+    }
+
+  }
+
+  hr {
+    border-top: 2px dashed #FFFFFF;
+    margin: 20px 6px 0px 12px !important;
+}
+    h2{
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0.063em;
+      color: #FFFFFF;
+    }
+}
+  .date-cards{
+    .top-vanues-card-style{
+      hr {
+        border-top: 2px dashed #64e2ff;
+        margin: -2px 10px 7px 6px !important;
+      }
+        .card-custom-Body {
+          .blue-side {
+            background: #64e2ff;
+            padding: 0.88rem 1.5rem;
+            p{
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 14px;
+              letter-spacing: 0.063em;
+              color: #1F518B;
+            }
+          }
+        }
+          .date-host {
+            display: flex;
+            align-items: center;
+            .address {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              font-weight: 500;
+              padding: 0px 10px;
+              font-size: 12px;
+              color: #515151;
+              img{
+                width: 12px;
+                height: 12px;
+              }
+            }
+          }
+          .profile-img {
+              position: absolute;
+              left: 0.7rem;
+              bottom: 0.5rem;
+              width: 27px;
+              height: 27px;
+              border: 1px solid #fff;
+              border-radius: 50%;
+            }
+            .event-card-chat {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-left: 34px;
+              
+              .last-content {
+                display: flex;
+                align-items: center;
+                .user-img-2 {
+                  height: 15px;
+                  width: 15px;
+                  border-radius: 50%;
+                  margin-right: -8px;
+                  border: 1px solid white;
+                }
+                .others {
+                  margin-left: 7px;
+                  font-size: 7px;
+                  margin-right: auto;
+                  margin-bottom: 0px;
+                }
+              }
+              .price-txt {
+                color: black;
+                font-size: 11px;
+                font-weight: bold;       
+                margin: -132px !important;
+              }
+            }
+  }
+  }
+  .date-events{
+    .date-text{
+      .btn-main{
+        width: 109px;
+        height: 40px;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 0.063em;
+      }
+    }
+
+
+  }
+  .top-vanues-card-style {
+   
+    .card-custom-Body {
+      .desc {
+        display: none;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: start;
+      }
+      .blue-side {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.063em;
+        color: #1F518B;
+      }
+      
+    }
+  }
+ 
 
   .slick-prev {
     display: none !important;
@@ -1366,93 +1619,7 @@
   .happen {
     text-align: center !important;
   }
-  .date-cards {
-    .date-card-style {
-      width: 92%;
-      margin: 20px auto;
-  }
- 
-}
-.mobile-screen{
-  .top-vanues-card-style {
-    width: 70%;
-    .card-custom-Body {
-      .card-title {
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 27px;
-        text-align: start;
-      }
-      .address {
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 24px;
-        .loction-icon{
-        width: 40.96px;
-        height: 40.96px;
-        }
-      }
-     .blue-side {
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: 0.063em;
-      color: #1F518B;
-    //   p {
-    //     margin-top: -28px;
-    //     margin-bottom: -1rem;
-    // }
-    }
-    
-  }
-  }
-  .set-postion{
-    position: absolute;
-    margin-top: 0rem;
-  }
-  .vanuebg1{
-    background-image: url("../../../assets/vanuebg11.png");
-    text-align: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 192px;
-    z-index: -1;
-    position: "relative"
-  }
-  .vanuebg2{
-    background-image: url('../../../assets/Untitled.png');
-    text-align: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 156px;
-    z-index: 1;
-    position: "relative"
-  } 
-}
 
-.top-vanues-card-style {
- 
-  .card-custom-Body {
-    .desc {
-      display: none;
-    }
-    .card-title {
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 24px;
-      text-align: start;
-    }
-    .blue-side {
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 24px;
-      letter-spacing: 0.063em;
-      color: #1F518B;
-      p{}
-    }
-    
-  }
-}
 
   .in-town-highlight {
     width: 35.7% !important;

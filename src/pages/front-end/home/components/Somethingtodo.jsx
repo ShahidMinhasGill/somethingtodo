@@ -3,6 +3,8 @@ import { Col, Dropdown, Row } from "react-bootstrap";
 import DateCard from "../../components/DateCard";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Slider from "react-slick";
+import { settings } from "../../../../config/helper";
 const Somethingtodo = () => {
     useEffect(() => {
         Aos.init();
@@ -58,36 +60,48 @@ const Somethingtodo = () => {
                 </div>
             </Row>
             <Row style={{ filter: "drop-shadow(0px 6px 24px rgba(0, 0, 0, 0.2))", margin: "3rem 0" }}>
-                <Col lg={4}>
+                <Col className="d-none d-md-block d-lg-block" lg={4}>
                     <div className="date-cards">
                         <DateCard />
                     </div>
                 </Col>
-                <Col lg={4}>
+                <Col className="d-none d-md-block d-lg-block" lg={4}>
                     <div className="date-cards">
                         <DateCard />
                     </div>
                 </Col>
-                <Col lg={4}>
+                <Col className="d-none d-md-block d-lg-block" lg={4}>
                     <div className="date-cards">
                         <DateCard />
                     </div>
                 </Col>
-                <Col lg={4}>
+                <Col className="d-none d-md-block d-lg-block" lg={4}>
                     <div className="date-cards">
                         <DateCard />
                     </div>
                 </Col>
-                <Col lg={4}>
+                <Col className="d-none d-md-block d-lg-block" lg={4}>
                     <div className="date-cards">
                         <DateCard />
                     </div>
                 </Col>
-                <Col lg={4}>
+                <Col className="d-none d-md-block d-lg-block" lg={4}>
                     <div className="date-cards">
                         <DateCard />
                     </div>
                 </Col>
+                <div className="date-cards d-sm-block d-md-none ">
+                    <Col sm={6}>
+                        <Slider {...settings}>
+                            {
+                                [1, 2, 3, 4, 5, 6].map(item => (
+                                    <DateCard />
+                                ))
+                            }
+                        </Slider>
+                    </Col>
+                </div>
+
             </Row>
 
 

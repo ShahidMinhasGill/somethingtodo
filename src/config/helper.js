@@ -240,6 +240,7 @@ export const settings2 = {
       breakpoint: 480,
       settings: {
         slidesToShow: 4,
+        initialSlide: 2,
         slidesToScroll: 1
       }
     },
@@ -247,6 +248,7 @@ export const settings2 = {
       breakpoint: 400,
       settings: {
         slidesToShow: 4,
+        initialSlide: 2,
         slidesToScroll: 1
       }
     }
