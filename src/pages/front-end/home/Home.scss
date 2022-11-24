@@ -1553,13 +1553,18 @@
               font-size: 10px;
             }
             p{
-              margin-right: 0.1rem;
+              margin-right: 0.8rem;
             }
           }
       .date-time{
-      
+      .dot-style{
+        font-size: 17px;
+      }
+      .span-2{
+        margin-left: -13px;
+      }
         p{
-          font-size: 12px;
+        font-size: 12px;
         line-height: 7px;
         letter-spacing: 0.063em;
         color: #FFFFFF;

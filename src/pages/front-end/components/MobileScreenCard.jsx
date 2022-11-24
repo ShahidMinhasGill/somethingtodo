@@ -34,20 +34,28 @@ export default function MobileScreenCard() {
                 <div className="col-8">
                     <h2>LOREM IPSUM DOLOR SIT AMET</h2>
                     <div className="row d-flex date-time align-items-center justify-content-center">
-                        <div className="col-3 align-self-center">
+                        <div className="col-2">
                             <p>0-1</p>
-                            <p className="span-2">DAYS  </p>
-
+                            <p className="">DAYS</p>
                         </div>
-                        <div className="col-3">
+                        <div className="col-1">
+                            <p className="dot-style">:</p>
+                        </div>
+                        <div className="col-2">
                             <p>22</p>
                             <p className="span-2">HOURS</p>
                         </div>
-                        <div className="col-3">
+                        <div className="col-1">
+                            <p className="dot-style">:</p>
+                        </div>
+                        <div className="col-2">
                             <p>0-1</p>
                             <p className="span-2">MINUTES</p>
                         </div>
-                        <div className="col-3">
+                        <div className="col-1">
+                            <p className="dot-style">:</p>
+                        </div>
+                        <div className="col-2">
                             <p>0-1</p>
                             <p className="span-2">SECONDS</p>
                         </div>
