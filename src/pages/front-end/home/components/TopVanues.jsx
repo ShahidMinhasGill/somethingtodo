@@ -1,19 +1,49 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Geocode from "react-geocode";
 import TopVanuesCard from '../../components/TopVanuesCard';
 import { settings } from '../../../../config/helper';
 import { Col, Container, Row } from 'react-bootstrap';
 
-
-
 const TopVanues = () => {
+    const [address, setAddress] = useState("");
+    const currentCityName = useRef(null);
+    const lat = localStorage.getItem("lat");
+    const lng = localStorage.getItem("lng");
+    Geocode.setApiKey("AIzaSyBR962qKrR2IwdYUmk8J4diZVZuV_L9pWw");
+    const fetchLoction = () => {
+        Geocode.fromLatLng(lat, lng).then(
+            (response) => {
+                let city;
+                for (let i = 0; i < response.results[0].address_components.length; i++) {
+                    for (let j = 0; j < response.results[0].address_components[i].types.length; j++) {
+                        switch (response.results[0].address_components[i].types[j]) {
+                            case "locality":
+                                city = response.results[0].address_components[i].long_name;
+                                currentCityName.current = city;
+                                break;
+                            default:
+                                city = "";
+                                break;
+                        }
+                    }
+                }
+                setAddress(currentCityName.current);
+                console.log('address', address);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+    }
     useEffect(() => {
         AOS.init({ duration: 3000 });
+        fetchLoction();
     }, [])
 
     return (
@@ -22,8 +52,7 @@ const TopVanues = () => {
                 <p className="happen-text tex-center">
                     What's  Happening Right Now <br className='d-none d-md-block d-lg-block' /> in
                     <div className="topVanueHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
-
-                    <span> TORONTO</span>
+                    <span> {address}</span>
                 </p>
                 <Dropdown>
                     <Dropdown.Toggle variant="outlined" className="dropdown-btn">
