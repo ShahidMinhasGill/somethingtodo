@@ -1321,9 +1321,7 @@
 }
 
 @media (max-width: 475px) {
-  .slick-current {
-    width: 0px !important;
-  }
+
       .bg-img {
       .top-text {
         .place {
@@ -1367,6 +1365,11 @@
           margin-right: 2rem;
         } 
       } 
+      .mobile-screen{
+        .dropdown-btn{
+          width:  auto !important;
+        }
+      }
     }
     .date-cards {
       .date-card-style {
@@ -1431,68 +1434,228 @@
       position: "relative"
     } 
   }
-.small-screen-start-event{
-  .btn-main {
-    width: 98px;
-    height: 36px;
-    border-radius: 14px;
-    font-size: 12px;
-    font-weight: 400;
-
-}
-      .date-host {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .btn-main {
-          width: 70px;
-          height: 34px;
-          border-radius: 6px;
-          font-size: 10px;
+  .main-readyEvent{
+    padding: 0px !important;
+    .shareDiv{
+      background-color: #fff;
+      h2{
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: -0.017em;
+        color: #1F518B;
+      }
+      .btn-main {
+        width: 116px;
+        height: 44px;
+        background: #0081CB;
+        border-radius: 13px;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+      .last-row {
+        position: relative;
+        background-color: #fff;
+        .user-imge {
+          left: 44px;
+          height: 51px;
+          width: 52px;
+          position: absolute;
+          border: 3px solid #fff;
+          border-radius: 50%;
         }
+        p {
+          span {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 19px;
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.017em;
+            color: #515151;
+          }
+        }
+        .social-links {
+          a{
+              font-size: 18px;
+              display: inline-block;
+              background: #515151;
+              color: #fff;
+              line-height: 1;
+              padding: 6px 0;
+              margin-right: 9px;
+              border-radius: 50%;
+              text-align: center;
+              width: 36px;
+              height: 36px;
+              transition: 0.3s;
+          }
+          
+      }
+        .usersDiv {
+          margin: 2.3rem 0px 0px 4.8rem;
+        
+          .p {
+            font-size: 10px;
+            margin: 0 !important;
+          }
+          .last-content {
+            display: flex;
+            align-items: center;
+            .user-img-2 {
+              height: 21px;
+              width: 21px;
+              border-radius: 50%;
+              margin-right: -6px;
+              border: 1px solid white;
+            }
+            .others {
+              margin-left: 11px;
+              font-size: 7px;
+              margin-right: auto;
+              margin-bottom: 0px;
+            }
+          }
+        }
+        .price-txt {
+          color: black;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 19px;
+          display: flex;
+          align-items: center;
+          letter-spacing: 0.063em;
+        }
+      }
+    }
+    .small-screen-start-event{
+      padding: 0px !important;
+      width: 100%;
+      .card-img{
+        height: 12.5rem;
+      }
+      .btn-main {
+            width: 98px;
+            height: 36px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 400;
+          }
+          .date-host {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .btn-main {
+              width: 70px;
+              height: 34px;
+              border-radius: 6px;
+              font-size: 10px;
+            }
+            p{
+              margin-right: 0.1rem;
+            }
+          }
+      .date-time{
+      
         p{
-          margin-right: 0.1rem;
+          font-size: 12px;
+        line-height: 7px;
+        letter-spacing: 0.063em;
+        color: #FFFFFF;
+        font-weight: 500;
         }
+        .address{
+          color: #FFFFFF;
+          .loction-icon{
+            width: 24px;
+             height: 24px;
+          }
+          span{
+            font-size: 13px;
+            line-height: 12px;
+          }
+          img{
+            width: 15px;
+            height: 16px;
+          }
+        }
+    
       }
-  .date-time{
-  
-    p{
-      font-size: 12px;
-    line-height: 7px;
-    letter-spacing: 0.063em;
-    color: #FFFFFF;
-    font-weight: 500;
+    
+          hr{
+            border-top: 2px dashed #FFFFFF;
+            margin: 20px 6px 0px 12px !important;
+            }
+        h2{
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 24px;
+          letter-spacing: 0.063em;
+          color: #FFFFFF;
+        }
+        .last-row {
+          position: relative;
+          background-color: #fff;
+          margin: 0px -24px 0px -24px;
+          /* border-bottom-right-radius: 10px; */
+          margin-top: -13px;
+          .user-imge {
+            left: -24px;
+            height: 51px;
+            width: 52px;
+            position: absolute;
+            border: 3px solid #fff;
+            border-radius: 50%;
+          }
+          p {
+            span {
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 19px;
+              display: flex;
+              align-items: center;
+              letter-spacing: -0.017em;
+              color: #515151;
+            }
+          }
+          .usersDiv {
+            margin: 2.3rem 0px 0px 1.4rem;
+            .p {
+              font-size: 10px;
+              margin: 0 !important;
+            }
+            .last-content {
+              display: flex;
+              align-items: center;
+              .user-img-2 {
+                height: 21px;
+                width: 21px;
+                border-radius: 50%;
+                margin-right: -6px;
+                border: 1px solid white;
+              }
+              .others {
+                margin-left: 11px;
+                font-size: 7px;
+                margin-right: auto;
+                margin-bottom: 0px;
+              }
+            }
+          }
+          .price-txt {
+            color: black;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.063em;
+          }
+        }
     }
-    .address{
-      color: #FFFFFF;
-      .loction-icon{
-        width: 24px;
-         height: 24px;
-      }
-      span{
-        font-size: 13px;
-        line-height: 12px;
-      }
-      img{
-        width: 15px;
-        height: 16px;
-      }
-    }
-
   }
 
-  hr {
-    border-top: 2px dashed #FFFFFF;
-    margin: 20px 6px 0px 12px !important;
-}
-    h2{
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 24px;
-      letter-spacing: 0.063em;
-      color: #FFFFFF;
-    }
-}
   .date-cards{
     .top-vanues-card-style{
       hr {
@@ -1585,7 +1748,9 @@
 
   }
   .top-vanues-card-style {
-   
+    // .slick-current {
+    //   width: 39px !important;
+    // }
     .card-custom-Body {
       .desc {
         display: none;
