@@ -13,7 +13,7 @@ const TopSection = () => {
             <div className="top-text">
                 <p className="place">Find the best place to be</p>
                 <div className='top-buttons'>
-                    <CustomButton text='Create Something To Do' />
+                    <Button className='btn-main'>Create Something To Do</Button>
                     <Button variant='outlined' className='outlined-btn'>Find Something To Do</Button>
                 </div>
             </div>
