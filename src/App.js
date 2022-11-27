@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import FooterSection from "./pages/front-end/footer/FooterSection";
 import Header from "./pages/front-end/header/Header";
 import MainRoutes from "./routes/MainRoutes";
 const App = () => {
-  const dispatch = useDispatch();
   useEffect(() => {
     navigator?.geolocation.getCurrentPosition(
       ({ coords: { latitude: lat, longitude: lng } }) => {

@@ -9,6 +9,8 @@ import Geocode from "react-geocode";
 import TopVanuesCard from '../../components/TopVanuesCard';
 import { settings } from '../../../../config/helper';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 
 const TopVanues = () => {
     const [address, setAddress] = useState("");
@@ -34,7 +36,6 @@ const TopVanues = () => {
                     }
                 }
                 setAddress(currentCityName.current);
-                console.log('address', address);
             },
             (error) => {
                 console.error(error);
@@ -47,12 +48,13 @@ const TopVanues = () => {
     }, [])
 
     return (
-        <Row className='justify-content-between'>
+        <Row className='justify-content-between main-top-vanue'>
             <Col xs={12} md={4} data-aos="fade-right" className="aos-init aos-animate happen-wrapper">
                 <p className="happen-text tex-center">
                     What's  Happening Right Now <br className='d-none d-md-block d-lg-block' /> in
                     <div className="topVanueHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div>
                     <span> {address}</span>
+                    {/* <span> Lahore</span> */}
                 </p>
                 <Dropdown>
                     <Dropdown.Toggle variant="outlined" className="dropdown-btn">
@@ -67,23 +69,27 @@ const TopVanues = () => {
                     </Dropdown.Menu>
                 </Dropdown>
             </Col>
-            <Col xs={12} md={4} className='mobile-screen'>
-                <div className='vanuebg2'>
+            <Col xs={12} lg={4} md={6} className='mobile-screen'>
+                <div className='vanuebg'>
                     <div className="set-postion">
-                        <TopVanuesCard />
+                        <Link to="/vanue-detail">
+                            <TopVanuesCard />
+                        </Link>
                     </div>
                 </div>
-                <div className='vanuebg1'></div>
-
             </Col>
-            <Col xs={12} md={4} className='d-none d-lg-block'>
-                <TopVanuesCard />
+            <Col xs={12} lg={4} md={6} className='d-none d-lg-block topvanue-link'>
+                <Link to="/vanue-detail">
+                    <TopVanuesCard />
+                </Link>
             </Col>
-            <Col xs={12} lg={12}>
+            <Col xs={12} lg={12} >
                 <Slider {...settings} >
                     {
                         [1, 2, 3, 4, 5, 6, 7].map(item => (
-                            <TopVanuesCard />
+                            <Link to="/vanue-detail" >
+                                <TopVanuesCard />
+                            </Link>
                         ))
                     }
                 </Slider>
@@ -92,7 +98,9 @@ const TopVanues = () => {
                 <Slider {...settings} >
                     {
                         [1, 2, 3, 4, 5, 6, 7].map(item => (
-                            <TopVanuesCard />
+                            <Link to="/vanue-detail">
+                                <TopVanuesCard />
+                            </Link>
                         ))
                     }
                 </Slider>
