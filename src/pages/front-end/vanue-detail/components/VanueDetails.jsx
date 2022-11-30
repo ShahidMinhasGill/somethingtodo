@@ -14,6 +14,7 @@ import { AiOutlineClockCircle, AiOutlineStar } from 'react-icons/ai'
 import 'aos/dist/aos.css';
 import CustomButton from "../../../../components/form/CustomButton";
 import TopVanuesCard from '../../components/TopVanuesCard'
+import SimilarVanues from '../../components/SimilarVanues'
 
 export default function VanueDetails() {
     return (
@@ -248,29 +249,7 @@ export default function VanueDetails() {
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <div className="row similer-vanues" >
-                    <div className="col-lg-12 text-center  ">
-                        {/* <div className="vanueHighlight aos-init aos-animate" data-aos="fade-right" data-aos-duration="2000"></div> */}
-                        <h2> OTHER SIMILAR VENUES</h2>
-
-                    </div>
-                    <div className='col-lg-12 mt-3'>
-                        <Slider {...settings} >
-                            {
-                                [1, 2, 3, 4, 5, 6, 7].map(item => (
-
-                                    <TopVanuesCard />
-
-                                ))
-                            }
-                        </Slider>
-
-                    </div>
-
-
-                </div>
-            </div>
+            <SimilarVanues />
         </>
 
 
