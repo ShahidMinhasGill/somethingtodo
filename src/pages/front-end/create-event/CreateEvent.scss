@@ -1,6 +1,9 @@
+/* 
+author: arman ali
+github: https://github.com/Arman-Arzoo
+whatsapp: +923430048341
+*/
 @import "../../../breakpoint.scss";
-
-
 
 //   sass start //
 // create event header desktop
@@ -300,7 +303,6 @@
   }
 }
 
-
 // container overwrite
 .container {
   padding-left: 0;
@@ -428,9 +430,6 @@
 
 }
 
-
-
-
 // create event venue
 .create_event_venue {
 
@@ -498,6 +497,8 @@
       padding: 6px 8px;
       border: 1px solid #1F518B;
       border-radius: 14px;
+      width: 140px;
+      height: 36px;
     }
 
     .filter_group_left {
@@ -689,8 +690,6 @@
 
 }
 
-
-
 // event description
 .event_description {
   display: flex;
@@ -815,6 +814,11 @@
         padding-top: 1rem;
       }
 
+      input[type="text"] {
+        width: 95px;
+        height: 36px;
+      }
+
 
 
 
@@ -825,6 +829,8 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
+
+
     }
 
 
@@ -835,7 +841,7 @@
 
     .invite_friends {
       display: flex;
-      justify-content: space-between;
+      gap: 1rem;
       align-items: center;
 
       .invite_friends_right {
@@ -853,6 +859,12 @@
         box-sizing: border-box;
         width: 256px;
         height: 36px;
+      }
+
+      input[type="text"] {
+        width: 256px;
+        height: 36px;
+
       }
     }
 
@@ -949,17 +961,7 @@
       align-items: center;
       gap: 0.5rem;
 
-      input[type="checkbox"] {
 
-        background: #FFFFFF;
-        /* Dark blue */
-
-        border: 1px solid #1F518B;
-        border-radius: 4px;
-        width: 20px;
-        height: 20px;
-
-      }
 
       label {
         font-family: 'SF UI Display';
@@ -975,15 +977,7 @@
       align-items: center;
       gap: 0.5rem;
 
-      input[type="checkbox"] {
-        background: #FFFFFF;
-        /* Dark blue */
 
-        border: 1px solid #1F518B;
-        border-radius: 4px;
-        width: 20px;
-        height: 20px;
-      }
 
       label {
         font-family: 'SF UI Display';
@@ -999,7 +993,6 @@
 
 
 }
-
 
 // event detail
 .create_event_detail {
@@ -1102,7 +1095,97 @@
 
 }
 
+// create custom venue
+.create_custom_venue {
+  display: flex;
+  padding: 0rem 2rem;
+  gap: 2rem;
 
+  .form_feild {
+
+    .feild {
+      margin-top: 1.6rem;
+    }
+
+    input[type="text"] {
+      width: 256px;
+    }
+
+    select {
+      border-radius: 4px !important;
+      width: 256px;
+      height: 36px;
+    }
+
+    .checkbox_group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .input_text_group {
+      display: flex;
+      gap: 1rem;
+
+      input[type="text"] {
+        width: 100px;
+      }
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      h3 {
+        padding-top: 9px;
+      }
+    }
+  }
+
+
+  .photo_of_venue {
+    .image_container {
+      display: flex;
+      gap: 0.5rem;
+
+      .image_preview {
+        width: 200px;
+        height: 200px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          // object-fit: contain;
+        }
+      }
+
+      .add_image {
+        position: relative;
+
+        background: rgba(224, 224, 224, 0.62);
+        width: 200px;
+        height: 200px;
+
+        .icon_cirlce {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          color: #ffffff;
+          width: 70px;
+          height: 70px;
+          left: 65px;
+          top: 65px;
+          border-radius: 50%;
+
+          background: rgba(0, 129, 203, 0.52);
+        }
+      }
+    }
+  }
+}
+
+// *********** (Media) *************
 // create event  mobile screen less then 375
 @include media ('<=phone') {
   .createEventTop {
@@ -1435,7 +1518,11 @@
         margin: 1rem auto;
       }
 
-      select {}
+      select {
+
+        width: 103px;
+        height: 36px;
+      }
 
       .filter_group_left {}
     }
@@ -1447,6 +1534,7 @@
         gap: 1rem;
         flex-wrap: wrap;
         padding-top: 1rem;
+        justify-content: center;
 
         .event_card {
 
@@ -1709,7 +1797,8 @@
 
 
         input[type="text"] {
-          width: 100%;
+          width: 95px;
+          height: 36px;
         }
 
         .checkbox {
@@ -1741,8 +1830,14 @@
       }
 
       .table_button {
+        button {
+          width: 97px !important;
+          height: 36px !important;
+        }
 
         gap: 1rem;
+
+
       }
 
 
@@ -1760,8 +1855,9 @@
           gap: 1rem;
 
           button {
-            width: 140px;
+            width: 97px;
             height: 36px;
+
             font-weight: 400;
             font-size: 12px;
             line-height: 14px;
@@ -1769,7 +1865,14 @@
           }
         }
 
+        input[type="text"] {
+          width: 210px;
+          height: 36px;
+
+        }
+
         select {}
+
       }
 
       .mini_cards {
@@ -1836,7 +1939,6 @@
       .paying {
 
 
-        input[type="checkbox"] {}
 
         label {}
       }
@@ -1844,7 +1946,7 @@
       .shared {
 
 
-        input[type="checkbox"] {}
+
 
         label {}
 
@@ -2189,7 +2291,11 @@
         margin: 1rem auto;
       }
 
-      select {}
+      select {
+
+        width: 103px;
+        height: 36px;
+      }
 
       .filter_group_left {}
     }
@@ -2201,6 +2307,7 @@
         gap: 1rem;
         flex-wrap: wrap;
         padding-top: 1rem;
+        justify-content: center;
 
         .event_card {
 
@@ -2463,7 +2570,8 @@
 
 
         input[type="text"] {
-          width: 100%;
+          width: 95px;
+          height: 36px;
         }
 
         .checkbox {
@@ -2495,6 +2603,10 @@
       }
 
       .table_button {
+        button {
+          width: 97px !important;
+          height: 36px !important;
+        }
 
         gap: 1rem;
       }
@@ -2514,13 +2626,20 @@
           gap: 1rem;
 
           button {
-            width: 140px;
+            width: 97px;
             height: 36px;
+
             font-weight: 400;
             font-size: 12px;
             line-height: 14px;
 
           }
+        }
+
+        input[type="text"] {
+          width: 210px;
+          height: 36px;
+
         }
 
         select {}
@@ -2590,7 +2709,7 @@
       .paying {
 
 
-        input[type="checkbox"] {}
+
 
         label {}
       }
@@ -2598,7 +2717,7 @@
       .shared {
 
 
-        input[type="checkbox"] {}
+
 
         label {}
 
