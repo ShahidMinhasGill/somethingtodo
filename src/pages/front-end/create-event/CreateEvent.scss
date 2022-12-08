@@ -513,13 +513,12 @@ whatsapp: +923430048341
     display: flex;
     justify-content: space-between;
 
-
+    // card event
     .card_container {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       padding-top: 1rem;
-
 
 
       .event_card {
@@ -553,30 +552,16 @@ whatsapp: +923430048341
         }
       }
     }
-  }
 
-  // event map
-  .event_map {
-    padding-top: 1rem;
-
-    .mapouter {
-      position: relative;
-      text-align: right;
+    // event map
+    .event_map {
+      padding-top: 1rem;
       width: 346px;
-      height: 850px;
+      height: 802px;
     }
 
-    .gmap_canvas {
-      overflow: hidden;
-      background: none !important;
-      width: 100%;
-      height: 850px;
-    }
-
-    .gmap_iframe {
-      height: 850px !important;
-    }
   }
+
 
   // divider
   .divider_container {
@@ -1017,24 +1002,6 @@ whatsapp: +923430048341
   .map {
     width: 480px;
     height: 600px;
-
-    .mapouter {
-      position: relative;
-      text-align: right;
-      width: 480px;
-      height: 600px;
-    }
-
-    .gmap_canvas {
-      overflow: hidden;
-      background: none !important;
-      width: 100%;
-      height: 600px;
-    }
-
-    .gmap_iframe {
-      height: 600px !important;
-    }
   }
 
   .info {
@@ -1100,6 +1067,7 @@ whatsapp: +923430048341
   display: flex;
   padding: 0rem 2rem;
   gap: 2rem;
+  position: relative;
 
   .form_feild {
 
@@ -1140,6 +1108,13 @@ whatsapp: +923430048341
         padding-top: 9px;
       }
     }
+
+    .textarea_move {
+      position: absolute;
+      top: 293px;
+      right: 190px;
+
+    }
   }
 
 
@@ -1148,36 +1123,59 @@ whatsapp: +923430048341
       display: flex;
       gap: 0.5rem;
 
-      .image_preview {
-        width: 200px;
+      .image_preview_slider {
+        width: 408px;
         height: 200px;
+        overflow: hidden;
 
-        img {
-          width: 100%;
-          height: 100%;
-          // object-fit: contain;
+
+        .image_preview {
+          width: 200px;
+          height: 200px;
+          padding: 0.3rem 0.5rem 0rem 0rem;
+          position: relative;
+
+
+          img {
+            width: 100%;
+            height: 100%;
+            // object-fit: contain;
+          }
+
+          .close_icon {
+            background: linear-gradient(92.39deg, #FF9700 0%, #DE8300 91.96%);
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0px;
+            right: 0px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
+
       }
 
+
       .add_image {
-        position: relative;
 
         background: rgba(224, 224, 224, 0.62);
         width: 200px;
         height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .icon_cirlce {
           display: flex;
           align-items: center;
           justify-content: center;
-          position: absolute;
           color: #ffffff;
           width: 70px;
           height: 70px;
-          left: 65px;
-          top: 65px;
           border-radius: 50%;
-
           background: rgba(0, 129, 203, 0.52);
         }
       }
@@ -1355,7 +1353,7 @@ whatsapp: +923430048341
           .social {
             order: 2;
 
-            .socialIcon {}
+
           }
 
           button {
@@ -1377,7 +1375,6 @@ whatsapp: +923430048341
               top: 108px;
               right: -205px;
 
-              .icon {}
             }
 
             .date_icon {
@@ -1497,12 +1494,9 @@ whatsapp: +923430048341
 
         padding-left: 6rem !important;
 
-        i {}
 
-        input {
-          &[type="search"] {}
 
-        }
+
       }
 
 
@@ -1524,7 +1518,7 @@ whatsapp: +923430048341
         height: 36px;
       }
 
-      .filter_group_left {}
+
     }
 
     // card and map
@@ -1558,7 +1552,7 @@ whatsapp: +923430048341
             margin: 0.3rem 0.5rem 0rem 0rem;
           }
 
-          .btn-container {}
+
 
           img {
             width: 197px;
@@ -1571,23 +1565,10 @@ whatsapp: +923430048341
       // event map
       .event_map {
         padding-top: 1rem;
+        width: 100%;
+        height: 339px;
 
 
-        .mapouter {
-
-          width: 341px;
-          height: 339px;
-        }
-
-        .gmap_canvas {
-
-          width: 100%;
-          height: 339px;
-        }
-
-        .gmap_iframe {
-          height: 339px !important;
-        }
       }
 
       .width {
@@ -1610,9 +1591,7 @@ whatsapp: +923430048341
       display: none;
 
 
-      .divider {}
 
-      button {}
     }
 
     // add venue
@@ -1676,7 +1655,7 @@ whatsapp: +923430048341
         .add_venue {
           display: none;
 
-          .create {}
+
         }
       }
     }
@@ -1771,11 +1750,6 @@ whatsapp: +923430048341
       .question_option {
         gap: 2rem;
 
-        .checkbox {
-
-
-          label {}
-        }
 
 
       }
@@ -1788,7 +1762,7 @@ whatsapp: +923430048341
         font-size: 14px;
         font-weight: 500;
 
-        tr {}
+
 
 
       }
@@ -1820,9 +1794,7 @@ whatsapp: +923430048341
           }
         }
 
-        tr {}
 
-        td {}
 
 
 
@@ -1871,7 +1843,6 @@ whatsapp: +923430048341
 
         }
 
-        select {}
 
       }
 
@@ -1885,7 +1856,7 @@ whatsapp: +923430048341
             font-size: 14px !important;
           }
 
-          img {}
+
         }
       }
     }
@@ -1905,13 +1876,9 @@ whatsapp: +923430048341
       }
     }
 
-    .event_date_calender {
-      input {}
-    }
 
-    .event_time_field {
-      input {}
-    }
+
+
 
     .event_cost {
       .range_wdith {
@@ -1936,26 +1903,80 @@ whatsapp: +923430048341
       align-items: flex-start;
       gap: 1.4rem;
 
-      .paying {
 
 
 
-        label {}
-      }
-
-      .shared {
-
-
-
-
-        label {}
-
-      }
     }
 
 
 
   }
+
+  // create custom venue
+  .create_custom_venue {
+    flex-direction: column;
+    padding: 0rem;
+
+    .form_feild {
+      .textarea {
+        width: 256px;
+        height: 36px;
+
+
+      }
+
+      .feild {
+        .icon {
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .input_text_group {
+        gap: 0.5rem;
+      }
+
+      .textarea_move {
+        position: relative;
+        top: 0%;
+        right: 0%;
+      }
+
+    }
+
+    .photo_of_venue {
+      .image_container {
+
+
+
+        .image_preview_slider {
+          width: 208px;
+          height: 100px;
+
+          .image_preview {
+
+            width: 100px;
+            height: 100px;
+
+
+          }
+        }
+
+        .add_image {
+          width: 100px;
+          height: 100px;
+
+          .icon_cirlce {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+
 
 }
 
@@ -2128,7 +2149,6 @@ whatsapp: +923430048341
           .social {
             order: 2;
 
-            .socialIcon {}
           }
 
           button {
@@ -2147,10 +2167,10 @@ whatsapp: +923430048341
           .rightTop {
             .paid {
               position: absolute;
-              top: 140px;
+              top: 115px;
               right: -220px;
 
-              .icon {}
+
             }
 
             .date_icon {
@@ -2158,7 +2178,7 @@ whatsapp: +923430048341
               align-items: center;
               gap: 0.5rem;
               position: absolute;
-              top: 140px;
+              top: 115px;
               right: -65px;
 
             }
@@ -2169,7 +2189,7 @@ whatsapp: +923430048341
             display: flex;
             align-items: center;
             position: absolute;
-            top: 149px;
+            top: 120px;
             left: 280px;
             padding: 0.4rem 0.5rem 0.4rem;
             border-radius: 5px;
@@ -2270,12 +2290,9 @@ whatsapp: +923430048341
 
         padding-left: 6rem !important;
 
-        i {}
 
-        input {
-          &[type="search"] {}
 
-        }
+
       }
 
 
@@ -2297,7 +2314,7 @@ whatsapp: +923430048341
         height: 36px;
       }
 
-      .filter_group_left {}
+
     }
 
     // card and map
@@ -2331,7 +2348,7 @@ whatsapp: +923430048341
             margin: 0.3rem 0.5rem 0rem 0rem;
           }
 
-          .btn-container {}
+
 
           img {
             width: 197px;
@@ -2344,23 +2361,11 @@ whatsapp: +923430048341
       // event map
       .event_map {
         padding-top: 1rem;
+        width: 100%;
+        height: 339px;
 
 
-        .mapouter {
 
-          width: 100%;
-          height: 339px;
-        }
-
-        .gmap_canvas {
-
-          width: 100%;
-          height: 339px;
-        }
-
-        .gmap_iframe {
-          height: 339px !important;
-        }
       }
 
       .disable_list {
@@ -2383,9 +2388,9 @@ whatsapp: +923430048341
       display: none;
 
 
-      .divider {}
 
-      button {}
+
+
     }
 
     // add venue
@@ -2449,7 +2454,7 @@ whatsapp: +923430048341
         .add_venue {
           display: none;
 
-          .create {}
+
         }
       }
     }
@@ -2544,11 +2549,6 @@ whatsapp: +923430048341
       .question_option {
         gap: 2rem;
 
-        .checkbox {
-
-
-          label {}
-        }
 
 
       }
@@ -2561,7 +2561,6 @@ whatsapp: +923430048341
         font-size: 14px;
         font-weight: 500;
 
-        tr {}
 
 
       }
@@ -2593,9 +2592,7 @@ whatsapp: +923430048341
           }
         }
 
-        tr {}
 
-        td {}
 
 
 
@@ -2642,7 +2639,7 @@ whatsapp: +923430048341
 
         }
 
-        select {}
+
       }
 
       .mini_cards {
@@ -2655,7 +2652,7 @@ whatsapp: +923430048341
             font-size: 14px !important;
           }
 
-          img {}
+
         }
       }
     }
@@ -2675,13 +2672,9 @@ whatsapp: +923430048341
       }
     }
 
-    .event_date_calender {
-      input {}
-    }
 
-    .event_time_field {
-      input {}
-    }
+
+
 
     .event_cost {
       .range_wdith {
@@ -2706,26 +2699,76 @@ whatsapp: +923430048341
       align-items: flex-start;
       gap: 1.4rem;
 
-      .paying {
 
-
-
-
-        label {}
-      }
-
-      .shared {
-
-
-
-
-        label {}
-
-      }
     }
 
 
 
   }
+
+  // create custom venue
+  .create_custom_venue {
+    flex-direction: column;
+    padding: 0rem;
+
+    .form_feild {
+      .textarea {
+        width: 256px;
+        height: 36px;
+      }
+
+      .feild {
+        .icon {
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .input_text_group {
+        gap: 0.5rem;
+      }
+
+      .textarea_move {
+        position: relative;
+        top: 0%;
+        right: 0%;
+      }
+    }
+
+
+    .photo_of_venue {
+      .image_container {
+
+
+        .image_preview_slider {
+          width: 208px;
+          height: 100px;
+
+          .image_preview {
+
+            width: 100px;
+            height: 100px;
+
+
+          }
+        }
+
+        .add_image {
+          width: 100px;
+          height: 100px;
+
+          .icon_cirlce {
+
+            width: 50px;
+            height: 50px;
+
+          }
+        }
+      }
+    }
+  }
+
 
 }

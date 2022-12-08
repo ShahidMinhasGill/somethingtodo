@@ -9,13 +9,40 @@ import CustoModal from '../../components/CustomModal';
 import websiteIcon from '../../../../assets/icons/website.svg'
 import phoneIcon from '../../../../assets/icons/phone.svg'
 import locationIcon from '../../../../assets/icons/location.svg'
+import MapModal from '../../components/MapModal';
+import Slider from 'react-slick';
 
 
 const Venue = () => {
 
+    // usestate for local state
     const [mapOrCarView, setMapOrCardView] = useState("mapview");
     const [mapOrcardTap, setMapOrCardTap] = useState("mapTap");
     const [open, setOpen] = useState(false);
+
+    // get image list
+    const [imageViewList, setImageViewList] = useState([
+        {
+            id: 1,
+            url: dummy
+        },
+        {
+            id: 2,
+            url: dummy
+        }
+    ]);
+
+    // a funtion to add image
+    const addimage = (data) => {
+        setImageViewList(prevState => [...prevState, { id: 3, url: dummy }])
+    }
+
+    // a function to delete image
+    const deleteImage = (id) => {
+        setImageViewList((current) =>
+            current.filter((img) => img.id !== id)
+        );
+    };
 
     return (
         <div className='create_event_venue'>
@@ -29,7 +56,6 @@ const Venue = () => {
             </div>
 
             {/* filter */}
-
             <div className='filter_group'>
                 <div className='filter_group_left'>
                     <h2>ALL</h2>
@@ -49,7 +75,7 @@ const Venue = () => {
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     CREATE CUSTOM VENUE
                 </button>
-                {/* modal */}
+                {/* modal for create cutom venue */}
                 <CustoModal open={open} close={setOpen} title="CREATE CUSTOM VENUE" size="lg">
                     <div className='create_custom_venue'>
                         <div className="form_feild">
@@ -104,9 +130,9 @@ const Venue = () => {
 
                                 <input type="text" className='text' placeholder='888-888-888' />
                             </div>
-                            <div className='feild'>
+                            <div className='feild form-outline mb-4 textarea_move'>
                                 <h3>DESCRIPTION</h3>
-                                <textarea name="description" id="description" cols="50" rows="7"></textarea>
+                                <textarea className='form-control' name="description" id="description" rows="6" cols="50" style={{ maxWidth: "100%" }}></textarea>
                             </div>
 
 
@@ -114,44 +140,45 @@ const Venue = () => {
                         <div className="photo_of_venue">
                             <h3>Add Photos Of Your Event</h3>
                             <div className='image_container'>
-                                <div className='image_preview'>
+
+                                <Slider
+                                    slidesToShow={2}
+                                    className='image_preview_slider'>
+                                    {
+                                        imageViewList?.map(item => (
+
+                                            <div className='image_preview' >
+                                                <img src={item?.url} alt="" />
+                                                <div className='close_icon' onClick={() => deleteImage(item?.id)}>
+                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </Slider>
+
+                                {/* <div className='image_preview'>
                                     <img src={dummy} alt="" />
-                                </div>
-                                <div className='image_preview'>
-                                    <img src={dummy} alt="" />
-                                </div>
-                                <div className='add_image'>
+                                    <div className='close_icon'>
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </div>
+                                </div> */}
+
+                                <div className='add_image' onClick={() => addimage()} >
                                     <div className='icon_cirlce'>
                                         <i class="fa fa-plus" aria-hidden="true"></i>
                                     </div>
                                 </div>
+                                {/* <input type="file" name="imgUpload" id="imgUpload" /> */}
                             </div>
                         </div>
 
+
+                    </div>
+                    <div className='d-flex justify-content-center mt-4 mb-3'>
+                        <button className='btn_primary'>CREATE</button>
                     </div>
                 </CustoModal>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
 
             {/* card and map button for mobile*/}
@@ -167,6 +194,7 @@ const Venue = () => {
                     LIST VIEW
                 </button>
             </div>
+
             {/* card and map  */}
             <div className='card_and_map_container'>
                 {/* card */}
@@ -201,21 +229,14 @@ const Venue = () => {
                 {/* map */}
                 <div className={mapOrCarView === "mapview" ? "width" : "disable_map"}>
                     <div className="event_map">
-                        <div className="mapouter">
-                            <div className="gmap_canvas">
-                                <iframe className="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=346&amp;height=850&amp;hl=en&amp;q=lahore&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                                </iframe>
-                                <a href="https://piratebay-proxys.com/">Piratebay</a>
-                            </div>
 
-                        </div>
+                        <MapModal latlng={[31.5204, 74.3587]} />
                     </div>
 
                 </div>
             </div>
 
             {/* divider */}
-
             <div className='divider_container'>
                 <div className='divider'></div>
                 <button className='btn_blue'>
