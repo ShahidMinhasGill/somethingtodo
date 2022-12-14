@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetVenueList } from '../service/CreateEventApi';
 
 
-const Venue = () => {
+const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, setPreviewImage }) => {
     // hook importer
     const dispatch = useDispatch()
 
@@ -33,15 +33,18 @@ const Venue = () => {
     const [mapOrcardTap, setMapOrCardTap] = useState("mapTap");
     const [open, setOpen] = useState(false);
     const [openError, setOpenError] = useState(false);
-    const [images, setImages] = useState([])
-    const [previewImage, setPreviewImage] = useState([])
-    const [addedVenues, setAddedVenues] = useState([])
+
 
     // useSlector to get State from store
     const { getVenueList } = useSelector((state) => state?.createEventSlice)
     console.log(getVenueList)
     console.log(addedVenues)
 
+    const addedVenueId = addedVenues?.map((venue) => {
+        return venue?.id
+    })
+
+    console.log(addedVenueId)
     // a function to delete image
     const deleteImage = (id) => {
 
@@ -83,7 +86,7 @@ const Venue = () => {
                 <h2>SEARCH VENUES: </h2>
                 <div class="right-inner-icon">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="search" placeholder="Search City / Current Location" />
+                    <input className="search" type="search" placeholder="Search City / Current Location" />
                 </div>
             </div>
 
@@ -245,7 +248,14 @@ const Venue = () => {
                                     <div className='btn-container'>
                                         <button className='btn_secondary ' onClick={() => {
                                             addVenueAction(item)
-                                        }}>
+
+                                        }}
+                                            style={{
+                                                background: addedVenueId?.includes(item?.id) ? 'green' : '',
+                                                opacity: addedVenueId?.includes(item?.id) ? '0.45' : ''
+                                            }}
+                                            disabled={addedVenueId?.includes(item?.id)}
+                                        >
                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                             ADD  VENUE
                                         </button>
@@ -265,7 +275,7 @@ const Venue = () => {
                 <div className={mapOrCarView === "mapview" ? "width" : "disable_map"}>
                     <div className="event_map">
 
-                        <MapModal position={[51.505, -0.09]} />
+                        <MapModal position={[51.505, -0.09]} data={addedVenues} />
                     </div>
 
                 </div>
@@ -285,43 +295,50 @@ const Venue = () => {
                 <h2 className='disable_mobile'>ADDED VENUES</h2>
                 <h2 className='disable_desktop'>SEARCH VENUES:</h2>
                 <div className='venue_card_container'>
+                    {
+                        addedVenues?.length > 0 ?
+                            <Slider className='venue_cards' slidesToShow={addedVenues?.length === 1 ? 1 : 2}>
+                                {
+                                    addedVenues.map(item => {
+                                        console.log(item?.id)
+                                        return (
+                                            <div className='venue_card'>
+                                                <img src={dummy} alt="" />
+                                                <h5 >{item?.Title}</h5>
+                                                <p className='p_gray_10 '>
+                                                    {
+                                                        item?.Description.length > 230 ?
+                                                            item?.Description?.substring(0, 230) + "..."
+                                                            : item?.Description?.substring(0, 230)
+                                                    }
+                                                </p>
+                                                <div className='btn-container'>
+                                                    {/* while integrating api you must pass all attribute same on the button */}
+                                                    <button className='btn_error desktop_btn'
+                                                        onClick={() => RemoveVenueAction(item)}
+                                                    >
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                        REMOVE VENUE
+                                                    </button>
+                                                    <button className='btn_error mobile_btn'
+                                                        onClick={() => RemoveVenueAction(item)}
+                                                    >
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                        REMOVE
+                                                    </button>
+                                                </div>
 
-                    <Slider className='venue_cards' slidesToShow={addedVenues?.length === 1 ? 1 : 2}>
-                        {
-                            addedVenues.map(item => {
-                                console.log(item?.id)
-                                return (
-                                    <div className='venue_card'>
-                                        <img src={dummy} alt="" />
-                                        <h5 >{item?.Title}</h5>
-                                        <p className='p_gray_10 '>
-                                            {
-                                                item?.Description.length > 230 ?
-                                                    item?.Description?.substring(0, 230) + "..."
-                                                    : item?.Description?.substring(0, 230)
-                                            }
-                                        </p>
-                                        <div className='btn-container'>
-                                            {/* while integrating api you must pass all attribute same on the button */}
-                                            <button className='btn_error desktop_btn'
-                                                onClick={() => RemoveVenueAction(item)}
-                                            >
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                                REMOVE VENUE
-                                            </button>
-                                            <button className='btn_error mobile_btn'
-                                                onClick={() => RemoveVenueAction(item)}
-                                            >
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                                REMOVE
-                                            </button>
-                                        </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </Slider>
+                            :
+                            <div className='venue_cards d-flex justify-content-center align-items-center'  >
+                                No venue Added add venue to show
+                            </div>
+                    }
 
-                                    </div>
-                                )
-                            })
-                        }
-                    </Slider>
 
                     <div className='add_venue'>
                         <div className='create'>
