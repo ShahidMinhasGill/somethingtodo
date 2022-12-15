@@ -12,8 +12,22 @@ import Slider from 'react-slick'
 import { settings } from '../../../../config/helper'
 import { Link } from 'react-router-dom'
 import BlogCard from './BlogCard'
+import { GetBlogList } from '../service/BlogApi'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function BlogList() {
+
+    const dispatch = useDispatch()
+
+    // useSlector to get State from store
+    const { getBlogList } = useSelector((state) => state?.blogSlice);
+    console.log(getBlogList)
+
+    // useEffect to call function
+    useEffect(() => {
+        dispatch(GetBlogList())
+    }, [])
     return (
         <div className="container-fluid">
             <div className="row  justify-content-center mobilescreenstyle">
@@ -55,9 +69,10 @@ export default function BlogList() {
                 <div className="col-4 ">
                     <img src={micImg} alt="" className='micimg' />
                 </div>
-                <div className="row mt-5 justify-content-center ">
+                <div className="col-11" style={{ padding: '2.3rem' }}><hr /></div>
+                {/* <div className="row mt-5 justify-content-center ">
                     <div className="col-10"><hr /></div>
-                </div>
+                </div> */}
                 <div className="row mt-5">
                     <BlogCard />
                 </div>
@@ -106,15 +121,16 @@ export default function BlogList() {
                         </p>
                     </div>
                 </div>
+                <div className="col-9 d-none d-sm-none d-md-block" style={{ marginLeft: '-101px' }}><hr /></div>
             </div>
-            <div className="row mt-5 justify-content-center ">
+            {/* <div className="row mt-5 justify-content-center ">
                 <div className="col-9 d-none d-sm-none d-md-block"><hr /></div>
-            </div>
-            <div className="row  justify-content-center recent-blog ">
+            </div> */}
+            <div className="row   recent-blog ">
                 <div className="recentBlogHighlight"></div>
-                <div className="col-4">
-                    <div className="row ">
-                        <div className="col-12 mt-4">
+                <div className="col-6">
+                    <div className="row  justify-content-end">
+                        <div className="col-10 mt-4">
                             <h2>SOMETHING <span className='span-color'>TO</span> DO</h2>
                         </div>
                         <div className="recent-blog-img mt-3">
