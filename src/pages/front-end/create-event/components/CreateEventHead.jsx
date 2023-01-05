@@ -3,15 +3,32 @@ author: arman ali
 github: https://github.com/Arman-Arzoo
 whatsapp: +923430048341
 */
-import React from 'react'
+import React, { useMemo } from 'react'
 import Slider from 'react-slick';
 import logo from "../../../../assets/logo.png";
 import dummy from "../../../../assets/dummy1.png"
-import { settings } from '../../../../config/helper';
+// import { settings } from '../../../../config/helper';
 import Countdown from 'react-countdown';
 import profilegirl from '../../../../assets/profilegirl.svg'
+import moment from 'moment/moment';
 
-const CreateEventHead = () => {
+const CreateEventHead = ({ previewImage, descData, timeandpriceData, addedVenues }) => {
+
+    console.log(addedVenues)
+
+    // use meno call back function to calculate count
+    const calculateCount = (Edate, Etime) => {
+        // tell moment how to parse the input string
+        var momentObj = moment(Edate + Etime, 'YYYY-MM-DDLT');
+        // conversion
+        var dateTime = momentObj.format('YYYY-MM-DDTHH:mm:ss')
+        return dateTime
+    }
+    // calculation for count timmer base on time and date
+    const calculateTimerCount = useMemo(() => {
+        return calculateCount(timeandpriceData?.eventDate, timeandpriceData?.eventTime)
+    }, [timeandpriceData?.eventDate, timeandpriceData?.eventTime]);
+
 
     // Random component
     const Completionist = () => <span>You are good to go!</span>;
@@ -42,7 +59,7 @@ const CreateEventHead = () => {
                     <p>Seconds</p>
                 </div>
 
-                <button className='btn-main'>JOIN NOW</button>
+                {/* <button className='btn-main'>JOIN NOW</button> */}
             </div>
 
         }
@@ -58,33 +75,40 @@ const CreateEventHead = () => {
             <br />
             <br />
             <div className='container createEventSilder'>
+                <div className='move_up'>
+                    <Slider
+                        slidesToShow={(addedVenues?.length === 1 && 1) || (addedVenues?.length === 2 && 2) || (addedVenues?.length > 2 && 3)}
+                    // className="center"
+                    // centerMode={true}
+                    >
+                        {
+                            addedVenues?.map((item, index) => (
 
-                <Slider {...settings} className='sliderMain'>
-                    {
-                        [1, 2, 3, 4, 5, 6].map(item => (
-                            <img className="img-fluid" src={dummy} alt="logo" />
-                        ))
-                    }
-                </Slider>
+                                <img className="img-fluid" src={item?.photos?.length > 0 && typeof item?.photos[0]?.getUrl === "function" ? item?.photos[0].getUrl() : dummy} alt="logo" key={index} style={{ height: "300px" }} />
+                            ))
+                        }
+                    </Slider>
+                </div>
+
 
                 <div className='createEventInfoContainer'>
                     <div className='info'>
-                        <h4>LOREM IPSUM DOLOR SIT AMET</h4>
+                        <h4>{descData?.eventTitle || "Your Event Title"}</h4>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+                        <p>{descData?.eventDescription || "Your event Description"}</p>
                     </div>
                     <div className='timer'>
                         <p className='timerStart'>Event starts in</p>
-                        <Countdown date={Date.now() + 1000000000} renderer={renderer} />,
+                        <Countdown date={calculateTimerCount} renderer={renderer} />,
                     </div>
                     <div className='address'>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <i className="fa fa-map-marker" aria-hidden="true"></i>
                         <p>Address</p>
                     </div>
                 </div>
 
-
-                <div className='eventFooter'>
+                {/* comment for temporary purpose */}
+                {/* <div className='eventFooter '>
                     <div >
                         <p className='mo_share_p'>Share with friends:</p>
                         <div className='left'>
@@ -93,7 +117,7 @@ const CreateEventHead = () => {
                             </div>
                             <div className='liveChatContainer'>
                                 <div className='liveChat'>
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <i className="fa fa-envelope" aria-hidden="true"></i>
                                     <p>live chat</p>
                                 </div>
                                 <div className='liveChatPeople'>
@@ -102,11 +126,10 @@ const CreateEventHead = () => {
                                         <img src={profilegirl} alt="" width="22px" height="22px" />
                                         <img src={profilegirl} alt="" width="22px" height="22px" />
                                         <img src={profilegirl} alt="" width="22px" height="22px" />
-                                        {/* <img src={profilegirl} alt="" width="22px" height="22px" />
-                                    <img src={profilegirl} alt="" width="22px" height="22px" /> */}
+                                    
                                     </div>
                                     <div className='infoPeopleCount'>
-                                        <span>& 12 other </span> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        <span>& 12 other </span> <i className="fa fa-angle-right" aria-hidden="true"></i>
                                     </div>
 
                                 </div>
@@ -117,13 +140,13 @@ const CreateEventHead = () => {
                     <div className='middel'>
                         <div className='social'>
                             <div className='socialIcon'>
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                <i className="fa fa-twitter" aria-hidden="true"></i>
                             </div>
                             <div className='socialIcon'>
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                <i className="fa fa-instagram" aria-hidden="true"></i>
                             </div>
                             <div className='socialIcon'>
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                <i className="fa fa-facebook" aria-hidden="true"></i>
                             </div>
                         </div>
                         <button>INVITE FRIENDS</button>
@@ -131,13 +154,13 @@ const CreateEventHead = () => {
                     <div className='right'>
                         <div className='rightTop'>
                             <div className='date_icon'>
-                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                <i className="fa fa-calendar-o" aria-hidden="true"></i>
 
                                 <p> Date</p>
                             </div>
                             <div className='paid'>
                                 <div className="icon">
-                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                    <i className="fa fa-usd" aria-hidden="true"></i>
                                 </div>
 
                                 <p> Paid by host</p>
@@ -145,12 +168,12 @@ const CreateEventHead = () => {
                         </div>
                         <div className='rigthBottom'>
                             <h4>
-                                $45.00
+                                ${timeandpriceData?.eventCost[1]}
                             </h4>
                         </div>
 
                     </div>
-                </div>
+                </div> */}
             </div>
 
 

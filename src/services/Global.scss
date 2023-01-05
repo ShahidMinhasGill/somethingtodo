@@ -277,7 +277,14 @@ h6 {
       border: 2px solid white;
 
     }
+
   }
+
+  .single-thumb .range-slider__thumb[data-lower] {
+    width: 0;
+    border: none;
+  }
+
 }
 
 .similer-vanues {
@@ -344,6 +351,7 @@ h6 {
   align-items: center;
   gap: 8px;
   outline: none;
+
 }
 
 // custom input type text
@@ -597,6 +605,66 @@ h6 {
   }
 }
 
+// custom modal map venue list card
+.map_venue_list {
+
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .leaflet-popup-content {
+    p {
+      margin: 0px;
+    }
+
+    h5 {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+}
+
+.pagination {
+  background: #0081CB;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0rem 1rem;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+//customize scroll bar
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #D5EAFF;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #64E2FF;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0081CB;
+}
 
 
 // global css for mobile
@@ -641,4 +709,20 @@ h6 {
     }
   }
 
+}
+
+
+
+
+.left-sidebar {
+  position: fixed;
+  top: 0;
+  left: 12px;
+}
+
+/***** Main Content *****/
+.main-content {
+  margin-left: 350px;
+  margin-top: 3rem;
+  transition: all 0.3s ease;
 }

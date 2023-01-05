@@ -15,36 +15,89 @@ import CustomUpload from '../../components/CustomUpload';
 import CustomErrorPopUp from '../../components/CustomErrorPopUp';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetVenueList } from '../service/CreateEventApi';
+import { GetEventList, GetVenueList } from '../service/CreateEventApi';
+import CustomPagination from '../../components/CustomPagination';
+import customPagination from '../../components/CustomPagination';
+// import { GetCatogories } from '../../../../services/GoogleSlice';
+import { Loader } from "@googlemaps/js-api-loader"
+import { GetPlacesList } from '../../../../services/GoogleSlice';
+import Autocomplete from "react-google-autocomplete";
+import { AiOutlineConsoleSql } from 'react-icons/ai';
+import { AddedVenueSorting } from './AddedVenueSorting';
+
 
 
 const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, setPreviewImage }) => {
     // hook importer
     const dispatch = useDispatch()
 
-    // var settings = {
-    //     className: "center venue_cards",
-    //     centerMode: true,
-
-    // }
-
     // usestate for local state
     const [mapOrCarView, setMapOrCardView] = useState("mapview");
     const [mapOrcardTap, setMapOrCardTap] = useState("mapTap");
     const [open, setOpen] = useState(false);
     const [openError, setOpenError] = useState(false);
+    const [venueList, setVenueList] = useState([])
+    const [catogory, setCatogory] = useState("")
+    const [distance, setDistance] = useState("500")
+    const [searchLocation, setSearchLocation] = useState("")
 
+    console.log(searchLocation)
+    // list of catogories 
+    const catogories = [{
+        id: 1,
+        name: 'dinning',
+
+    },
+    {
+        id: 2,
+        name: "Adventure"
+    },
+    {
+        id: 3,
+        name: 'restaurant'
+    }
+    ]
+    // list of distance 
+    const distances = [
+        {
+            km: "25km"
+        },
+        {
+            km: "50km"
+        },
+        {
+            km: "75km"
+        },
+        {
+            km: "100km"
+        },
+    ]
+    // current location of user
+    const lat = localStorage.getItem("lat");
+    const lag = localStorage.getItem("lag");
+
+    const searchlat = searchLocation?.geometry?.location?.lat();
+    const searchlng = searchLocation?.geometry?.location?.lng();
+
+    // useSlector to get State from store
+    const { getPlacesList } = useSelector((state) => state?.googleSlice)
+    const { getCurrentLocation } = useSelector((state) => state?.shareSlice)
 
     // useSlector to get State from store
     const { getVenueList } = useSelector((state) => state?.createEventSlice)
-    console.log(getVenueList)
-    console.log(addedVenues)
+    // const { getLocationList } = useSelector((state) => state?.shareSlice)
+    // console.log(getLocationList)
+
+    // console.log(getVenueList)
+
+    // console.log(venueList)
+
 
     const addedVenueId = addedVenues?.map((venue) => {
-        return venue?.id
+        return venue?.id || venue?.place_id
     })
 
-    console.log(addedVenueId)
+
     // a function to delete image
     const deleteImage = (id) => {
 
@@ -63,30 +116,124 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
 
     // add venue
     const addVenueAction = (item) => {
-
         setAddedVenues((prevState) => [...prevState, item])
     }
 
     // remove venue
     const RemoveVenueAction = (item) => {
+        console.log(item)
         setAddedVenues((current) =>
-            current.filter((venue) => venue.id !== item?.id)
+            current.filter((venue) => {
+
+
+                if (venue.id) {
+                    return venue.id !== item?.id
+                } else {
+                    return venue?.place_id !== item?.place_id
+                }
+
+            }
+            )
         );
     }
+
+    // useEffect to check google event and db event
+    // useEffect(() => {
+    //     if (getLocationList != []) {
+    //         setVenueList(getLocationList)
+    //     } else {
+    //         setVenueList(getVenueList)
+    //     }
+    // }, [getLocationList?.place_id, getVenueList?.id])
 
     // useEffect to call function
     useEffect(() => {
         dispatch(GetVenueList())
+        dispatch(GetEventList())
     }, [])
+
+    // useEffect to fetch all  venus from google
+    useEffect(() => {
+
+        var radias = distance.replace('km', '') * 1000
+        console.log(radias)
+        const loader = new Loader({
+            apiKey: "AIzaSyAlEQnPxaoYwZXM4aKDtwa3N7tYNvkKFkQ",
+            version: "weekly",
+            libraries: ["places"]
+
+        });
+
+        console.log(searchlat)
+        console.log(searchlng)
+        // fetch google api
+        loader.load().then((google) => {
+            var pyrmont = new google.maps.LatLng(searchlat || lat, searchlng || lag);
+            // var pyrmont = new google.maps.LatLng(33.1415552, 73.7476608);
+            let map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 33.1415552, lng: 73.7476608 },
+                zoom: 8,
+            });
+            var service
+
+            var request = {
+                location: pyrmont,
+                radius: radias,
+                type: catogory
+                // [`${catogory}` || "restaurant"]
+            };
+
+
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, getNearPlaces);
+            // service.getDetails(reqestplacebyid, getplaceDetail)
+
+            function getNearPlaces(results, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    dispatch(GetPlacesList(results))
+
+                } else {
+                    // console.log(status)
+                    // console.log(results)
+                }
+            }
+
+        });
+    }, [catogory, lat, lag, distance, searchLocation?.geometry?.location?.lat, searchLocation?.geometry?.location?.lng])
 
     return (
         <div className='create_event_venue'>
             {/* header */}
             <div className='header'>
                 <h2>SEARCH VENUES: </h2>
-                <div class="right-inner-icon">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <input className="search" type="search" placeholder="Search City / Current Location" />
+                <div className="right-inner-icon">
+                    <i className="fa fa-search" aria-hidden="true"></i>
+                    {/* <Autocomplete
+                        apiKey={"AIzaSyAlEQnPxaoYwZXM4aKDtwa3N7tYNvkKFkQ"}
+                        onPlaceSelected={(place) => {
+                            console.log(place);
+                        }}
+                    >
+                        <input
+                            className="search"
+                            type="search"
+                            placeholder="Search City / Current Location" />
+
+                    </Autocomplete> */}
+                    <Autocomplete
+                        className='search'
+                        apiKey={"AIzaSyAlEQnPxaoYwZXM4aKDtwa3N7tYNvkKFkQ"}
+                        // style={{ width: "90%" }}
+                        onPlaceSelected={(place) => {
+                            setSearchLocation(place)
+                            console.log(place)
+                        }}
+                        // options={{
+                        //     types: ["(regions)"],
+                        //     componentRestrictions: { country: "ru" },
+                        // }}
+                        defaultValue={getCurrentLocation}
+                    />
                 </div>
             </div>
 
@@ -94,20 +241,45 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
             <div className='filter_group'>
                 <div className='filter_group_left'>
                     <h2>ALL</h2>
-                    <select name="catogories" id="catogories" className='select'>
+                    <select
+                        name="catogories"
+                        id="catogories"
+                        className='select'
+                        value={catogory}
+                        onChange={(e) => {
+
+                            setCatogory(e.target.value)
+
+
+                        }}
+                    >
                         <option>Categories</option>
-                        <option value="1"> option one</option>
+                        {
+                            catogories?.map((item) =>
+                                <option value={item?.name}> {item?.name}</option>
+                            )
+
+                        }
                     </select>
-                    <select name="distance" id="distance" className='select'>
+                    <select name="distance" id="distance" className='select'
+                        value={distance}
+                        onChange={(e) => {
+                            setDistance(e.target.value)
+                        }}
+                    >
                         <option>Distance</option>
-                        <option value="1"> option one</option>
+                        {
+                            distances?.map(item =>
+                                <option value={item?.km}> {item?.km}</option>
+                            )
+                        }
                     </select>
                 </div>
                 <button className='btn_secondary mobile_create_event '
                     style={{ width: "233px", height: "48px" }}
                     onClick={() => setOpen(true)}
                 >
-                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <i className="fa fa-plus" aria-hidden="true"></i>
                     CREATE CUSTOM VENUE
                 </button>
                 {/* modal for create cutom venue */}
@@ -183,10 +355,10 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
                                             {
                                                 previewImage?.map((item, index) => (
 
-                                                    <div className='image_preview' >
+                                                    <div className='image_preview' key={index}>
                                                         <img src={item} alt="" />
                                                         <div className='close_icon' onClick={() => deleteImage(index)}>
-                                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                                            <i className="fa fa-times" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
                                                 ))
@@ -234,48 +406,75 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
                 <div className={mapOrCarView === "listview" ? "width" : "disable_list"}>
                     <div className="card_container">
                         {
-                            getVenueList.map(item => (
-                                <div className='event_card'>
-                                    <img src={dummy} alt="" />
-                                    <h5 >{item?.Title}</h5>
-                                    <p className='p_gray_10 '>
-                                        {
-                                            item?.Description.length > 230 ?
-                                                item?.Description?.substring(0, 230) + "..."
-                                                : item?.Description?.substring(0, 230)
-                                        }
-                                    </p>
-                                    <div className='btn-container'>
-                                        <button className='btn_secondary ' onClick={() => {
-                                            addVenueAction(item)
+                            getPlacesList?.length > 0 ?
+                                getPlacesList?.map(item => (
+                                    <div className='event_card' key={item?.id}>
 
-                                        }}
-                                            style={{
-                                                background: addedVenueId?.includes(item?.id) ? 'green' : '',
-                                                opacity: addedVenueId?.includes(item?.id) ? '0.45' : ''
+                                        <Slider slidesToShow={1} prevArrow={false} nextArrow={false} dots={false}>
+                                            {/* need to check */}
+
+                                            {
+                                                item?.photos ?
+                                                    item?.photos?.map(photo => {
+
+                                                        if (typeof photo.getUrl === "function") {
+                                                            return <img src={photo.getUrl()} alt="" />
+                                                        } else {
+                                                            return <img src={dummy} alt="" />
+
+                                                        }
+
+                                                    }) :
+                                                    <img src={dummy} alt="" />
+
+                                            }
+                                        </Slider>
+
+
+                                        <h5 >{item?.Title || item?.name}</h5>
+                                        <p className='p_gray_10 '>
+                                            {
+                                                item?.Description?.length > 230 ?
+                                                    item?.Description?.substring(0, 230) + "..."
+                                                    : item?.Description?.substring(0, 230)
+                                                    || item?.vicinity
+                                            }
+                                        </p>
+                                        <div className='btn-container'>
+                                            <button className='btn_secondary ' onClick={() => {
+                                                addVenueAction(item)
+
                                             }}
-                                            disabled={addedVenueId?.includes(item?.id)}
-                                        >
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                            ADD  VENUE
-                                        </button>
+                                                style={{
+                                                    background: addedVenueId?.includes(item?.id || item?.place_id) ? 'green' : '',
+                                                    opacity: addedVenueId?.includes(item?.id || item?.place_id) ? '0.4' : ''
+                                                }}
+                                                disabled={addedVenueId?.includes(item?.id || item?.place_id)}
+                                            >
+                                                <i className="fa fa-plus" aria-hidden="true"></i>
+                                                ADD  VENUE
+                                            </button>
+                                        </div>
+
                                     </div>
-
+                                ))
+                                :
+                                <div className='d-flex justift-content-center align-items-center'>
+                                    No Data Found
                                 </div>
-                            ))
                         }
-
-
-
-
-
                     </div>
                 </div>
                 {/* map */}
                 <div className={mapOrCarView === "mapview" ? "width" : "disable_map"}>
                     <div className="event_map">
 
-                        <MapModal position={[51.505, -0.09]} data={addedVenues} />
+                        <MapModal
+                            position={[51.505, -0.09]}
+                            data={getPlacesList}
+                            setAddedVenues={setAddedVenues}
+                            addedVenues={addedVenues}
+                        />
                     </div>
 
                 </div>
@@ -284,10 +483,11 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
             {/* divider */}
             <div className='divider_container'>
                 <div className='divider'></div>
-                <button className='btn_blue'>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
+
+                {/* <button className='btn_blue'>
+                    <i className="fa fa-plus" aria-hidden="true"></i>
                     VIEW MORE
-                </button>
+                </button> */}
             </div>
 
             {/* added venue */}
@@ -295,35 +495,41 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
                 <h2 className='disable_mobile'>ADDED VENUES</h2>
                 <h2 className='disable_desktop'>SEARCH VENUES:</h2>
                 <div className='venue_card_container'>
-                    {
+
+                    <AddedVenueSorting
+                        venueCard={addedVenues}
+                        setVenueCard={setAddedVenues}
+                    />
+                    {/* {
                         addedVenues?.length > 0 ?
                             <Slider className='venue_cards' slidesToShow={addedVenues?.length === 1 ? 1 : 2}>
                                 {
                                     addedVenues.map(item => {
-                                        console.log(item?.id)
+
                                         return (
-                                            <div className='venue_card'>
-                                                <img src={dummy} alt="" />
-                                                <h5 >{item?.Title}</h5>
+                                            <div className='venue_card' key={item?.id}>
+                                                <img src={item?.photos ? item?.photos[0]?.getUrl() : dummy} alt="" />
+                                                <h5 >{item?.Title || item?.name}</h5>
                                                 <p className='p_gray_10 '>
                                                     {
-                                                        item?.Description.length > 230 ?
+                                                        item?.Description?.length > 230 ?
                                                             item?.Description?.substring(0, 230) + "..."
                                                             : item?.Description?.substring(0, 230)
+                                                            || item?.vicinity
                                                     }
                                                 </p>
                                                 <div className='btn-container'>
-                                                    {/* while integrating api you must pass all attribute same on the button */}
+                                              
                                                     <button className='btn_error desktop_btn'
                                                         onClick={() => RemoveVenueAction(item)}
                                                     >
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                        <i className="fa fa-minus" aria-hidden="true"></i>
                                                         REMOVE VENUE
                                                     </button>
                                                     <button className='btn_error mobile_btn'
                                                         onClick={() => RemoveVenueAction(item)}
                                                     >
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                        <i className="fa fa-minus" aria-hidden="true"></i>
                                                         REMOVE
                                                     </button>
                                                 </div>
@@ -338,13 +544,15 @@ const Venue = ({ images, setImages, addedVenues, setAddedVenues, previewImage, s
                                 No venue Added add venue to show
                             </div>
                     }
+ */}
 
 
-                    <div className='add_venue'>
+
+                    {/* <div className='add_venue'>
                         <div className='create'>
-                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <i className="fa fa-plus" aria-hidden="true"></i>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
