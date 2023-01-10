@@ -134,14 +134,18 @@ const Invites = ({ age, gender, number, setAge, setNumber, setGender, isthisDate
             <table className="table">
                 <thead>
                     <tr>
-                        <th style={{ width: '25%' }}>NUMBER</th>
+                        <th style={{ width: '25%' }}>NUMBER OF PEOPLE</th>
                         <th>GENDER</th>
                         <th>AGE</th>
-                        <th style={{ width: '10%' }}>Action</th>
+                        {
+                            peopleInfo?.length > 0 &&
+                            <th style={{ width: '10%' }}>Action</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {peopleInfo?.length > 0 &&
+
                         peopleInfo?.map((item, index) => {
 
                             return (
@@ -207,7 +211,10 @@ const Invites = ({ age, gender, number, setAge, setNumber, setGender, isthisDate
                                             // setValues={}
                                             // onChange={(e) => { handleChange(item?.id, e) }}
                                             min={0} max={90}
-                                            step={1} />
+                                            step={1}
+                                            show={true}
+                                        />
+
                                     </td>
                                     <td>
                                         <AiFillDelete
@@ -303,6 +310,7 @@ const Invites = ({ age, gender, number, setAge, setNumber, setGender, isthisDate
                                 values={age}
                                 name="age"
                                 setValues={setAge}
+                                show={true}
                                 // onChange={(e) => { handleChange(item?.id, e) }}
                                 min={0} max={90}
                                 step={1} />
@@ -331,7 +339,7 @@ const Invites = ({ age, gender, number, setAge, setNumber, setGender, isthisDate
 
             </table>
             {
-                !isthisDate &&
+                isthisDate &&
                 <>
                     {/* question */}
                     <div className='question_date'>
@@ -348,12 +356,12 @@ const Invites = ({ age, gender, number, setAge, setNumber, setGender, isthisDate
                             </div>
 
                             <div className='checkbox'>
-                                <input type="checkbox" id='Request to join' name='Request to join'
+                                <input type="checkbox" id='Users must request to join' name='Users must request to join'
                                     value={whocanjoin}
                                     checked={whocanjoin === "request"}
                                     onChange={() => setWhocanjoin("request")}
                                 />
-                                <label htmlFor="Request to join">Request to join</label>
+                                <label htmlFor="Users must request to join">Users must request to join</label>
                             </div>
 
                         </div>

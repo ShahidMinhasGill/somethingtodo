@@ -98,13 +98,17 @@ const CreateEventHead = ({ previewImage, descData, timeandpriceData, addedVenues
                         <p>{descData?.eventDescription || "Your event Description"}</p>
                     </div>
                     <div className='timer'>
-                        <p className='timerStart'>Event starts in</p>
+                        {
+                            timeandpriceData?.eventDate &&
+                            <p className='timerStart'>Event starts in</p>
+                        }
                         <Countdown date={calculateTimerCount} renderer={renderer} />,
                     </div>
-                    <div className='address'>
+                    {/* hide for a temporarry purpose */}
+                    {/* <div className='address'>
                         <i className="fa fa-map-marker" aria-hidden="true"></i>
                         <p>Address</p>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* comment for temporary purpose */}

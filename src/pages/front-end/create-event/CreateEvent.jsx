@@ -13,6 +13,7 @@ const CreateEvent = () => {
     const [images, setImages] = useState([])
     const [previewImage, setPreviewImage] = useState([])
     const [addedVenues, setAddedVenues] = useState([])
+
     // event discription local state
     const [eventTitle, setEventTitle] = useState("");
     const [eventDescription, setEventDescription] = useState('')
@@ -26,7 +27,7 @@ const CreateEvent = () => {
     // time and price state
     const [eventDate, setEventDate] = useState("")
     const [eventTime, setEventTime] = useState("")
-    const [eventCost, setEventCost] = useState([0, 1000])
+    const [eventCost, setEventCost] = useState([0, 0])
     const [costSplit, setCostSplit] = useState("")
 
     console.log(addedVenues)
@@ -78,7 +79,7 @@ const CreateEvent = () => {
     const addVenues = addedVenues.map((item) => {
         return {
             place_id: item?.place_id,
-            image: item?.photos ? item?.photos[0]?.getUrl() : "",
+            imageUrl: item?.photos ? item?.photos[0]?.getUrl() : "",
             description: item?.vicinity,
             name: item?.name,
             location: { lat: item?.geometry?.location?.lat(), lng: item?.geometry?.location?.lng() },
